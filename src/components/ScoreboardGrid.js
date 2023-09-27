@@ -10,7 +10,7 @@ const ScoreboardGrid = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://127.0.0.1/scores/');
+                const response = await fetch('http://127.0.0.1:8000/scores/');
                 const data = await response.json();
                 setScoreboardDataList(data);
             } catch (error) {
