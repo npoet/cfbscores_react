@@ -19,7 +19,19 @@ const ScoreboardGrid = () => {
         };
 
         fetchData();
-    }, []);
+
+        // Set up automatic refresh for live games every 30 seconds
+        const liveGames = scoreboardDataList.filter(item => item.home_score !== undefined);
+        if (liveGames.length > 0) {
+            const refreshInterval = setInterval(() => {
+                fetchData();
+            }, 30000); // Refresh every 30 seconds
+
+            return () => {
+                clearInterval(refreshInterval); // Clear the interval on component unmount
+            };
+        }
+    }, [scoreboardDataList]); // Trigger the effect whenever scoreboardDataList changes
 
     return (
         <div className="scoreboard-grid">
