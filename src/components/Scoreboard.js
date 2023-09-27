@@ -26,10 +26,12 @@ const Scoreboard = ({ data, isLive }) => {
         home_mascot,
         home_logo,
         home_score,
+        home_record,
         away,
         away_mascot,
         away_logo,
         away_score,
+        away_record,
         time,
         quarter,
         tv,
@@ -50,13 +52,23 @@ const Scoreboard = ({ data, isLive }) => {
                 <div className="live-game">
                     <div className="team">
                         <img src={away_logo} alt={`${away} Logo`} />
+                        <div className="info">
+                            <h2>{away}</h2>
+                            <p>{away_record}</p>
+                        </div>
                         <div className="score">{away_score}</div>
                     </div>
+                    <p>{away_record}</p>
                     <div className="versus">VS</div>
                     <div className="team">
                         <img src={home_logo} alt={`${home} Logo`} />
+                        <div className="info">
+                            <h2>{home}</h2>
+                            <p>{home_record}</p>
+                        </div>
                         <div className="score">{home_score}</div>
                     </div>
+                    <p>{home_record}</p>
                     <div className="game-details">
                         <p>Time: {time}</p>
                         <p>Quarter: {quarter}</p>
@@ -70,6 +82,7 @@ const Scoreboard = ({ data, isLive }) => {
                         <div className="info">
                             <h2>{away}</h2>
                             <p>{away_mascot}</p>
+                            <p>{away_record}</p>
                         </div>
                     </div>
                     <div className="versus">VS</div>
@@ -78,12 +91,12 @@ const Scoreboard = ({ data, isLive }) => {
                         <div className="info">
                             <h2>{home}</h2>
                             <p>{home_mascot}</p>
+                            <p>{home_record}</p>
                         </div>
                     </div>
-                    
                     <div className="game-details">
-                        <p>Time: {time}</p>
-                            <p>TV: {generateTVLink(tv)}   |   Odds: {odds}</p>
+                        <p>{time}</p>
+                        <p>{generateTVLink(tv)}   |   {odds}</p>
                     </div>
                 </div>
             )}
