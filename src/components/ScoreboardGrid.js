@@ -8,9 +8,9 @@ const ScoreboardGrid = () => {
     const [scoreboardDataList, setScoreboardDataList] = useState([]);
 
     useEffect(() => {
-        const fetchScoreboardData = async () => {
+        const fetchData = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/scores/');
+                const response = await fetch('http://127.0.0.1/scores/');
                 const data = await response.json();
                 setScoreboardDataList(data);
             } catch (error) {
@@ -18,14 +18,21 @@ const ScoreboardGrid = () => {
             }
         };
 
-        fetchScoreboardData();
+        fetchData();
     }, []);
 
     return (
         <div className="scoreboard-grid">
-            {scoreboardDataList.map((scoreboardData, index) => (
-                <Scoreboard key={index} data={scoreboardData} />
-            ))}
+            {scoreboardDataList.map((scoreboardData, index) => {
+                const isLive = scoreboardData.home_score !== undefined;
+                return (
+                    <Scoreboard
+                        key={index}
+                        data={scoreboardData}
+                        isLive={isLive}
+                    />
+                );
+            })}
         </div>
     );
 };

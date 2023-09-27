@@ -20,15 +20,18 @@ const tvChannelIds = {
     "NBC": 19568
 };
 
-const Scoreboard = ({ data }) => {
+const Scoreboard = ({ data, isLive }) => {
     const {
         home,
         home_mascot,
         home_logo,
+        home_score,
         away,
         away_mascot,
         away_logo,
+        away_score,
         time,
+        quarter,
         tv,
         odds
     } = data;
@@ -43,25 +46,46 @@ const Scoreboard = ({ data }) => {
 
     return (
         <div className="scoreboard">
-            <div className="team">
-                <img src={home_logo} alt={`${home} Logo`} />
-                <div className="info">
-                    <h2>{home}</h2>
-                    <p>{home_mascot}</p>
+            {isLive ? (
+                <div className="live-game">
+                    <div className="team">
+                        <img src={home_logo} alt={`${home} Logo`} />
+                        <div className="score">{home_score}</div>
+                    </div>
+                    <div className="versus">VS</div>
+                    <div className="team">
+                        <img src={away_logo} alt={`${away} Logo`} />
+                        <div className="score">{away_score}</div>
+                    </div>
+                    <div className="game-details">
+                        <p>Time: {time}</p>
+                        <p>Quarter: {quarter}</p>
+                        <p>TV: {generateTVLink(tv)}</p>
+                    </div>
                 </div>
-            </div>
-            <div className="versus">VS</div>
-            <div className="team">
-                <img src={away_logo} alt={`${away} Logo`} />
-                <div className="info">
-                    <h2>{away}</h2>
-                    <p>{away_mascot}</p>
+            ) : (
+                <div className="scheduled-game">
+                    <div className="team">
+                        <img src={home_logo} alt={`${home} Logo`} />
+                        <div className="info">
+                            <h2>{home}</h2>
+                            <p>{home_mascot}</p>
+                        </div>
+                    </div>
+                    <div className="versus">VS</div>
+                    <div className="team">
+                        <img src={away_logo} alt={`${away} Logo`} />
+                        <div className="info">
+                            <h2>{away}</h2>
+                            <p>{away_mascot}</p>
+                        </div>
+                    </div>
+                    <div className="game-details">
+                        <p>Time: {time}</p>
+                            <p>TV: {generateTVLink(tv)}   |   Odds: {odds}</p>
+                    </div>
                 </div>
-            </div>
-            <div className="game-details">
-                <p>{time}</p>
-                <p>TV: {generateTVLink(tv)}   |   Odds: {odds}</p>
-            </div>
+            )}
         </div>
     );
 };
