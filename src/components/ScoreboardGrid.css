@@ -1,0 +1,71 @@
+/* ScoreboardGrid.css */
+
+.scoreboard-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* Adjust alignment based on your preference */
+    gap: 10px;
+    margin: 10px;
+}
+
+.scoreboard {
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    color: black;
+    width: calc(20% - 20px);
+    /* Each scoreboard takes x% width minus gap */
+    margin-bottom: 10px;
+    /* Ensure a gap between rows */
+}
+
+.team {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.team img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.team .info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.team h2 {
+    margin: 0;
+    font-size: 20px;
+    color: black;
+}
+
+.team p {
+    margin: 0;
+    font-size: 16px;
+    color: black;
+}
+
+.versus {
+    font-size: 24px;
+    margin: 10px 0;
+    color: black;
+    text-align: center;
+}
+
+.game-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: black;
+    text-align: center;
+}
+
+/* Add more styles as needed */
