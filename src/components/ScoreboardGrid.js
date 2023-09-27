@@ -10,7 +10,7 @@ const ScoreboardGrid = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/scores/');
+                const response = await fetch('http://127.0.0.1:8000/scores');
                 const data = await response.json();
                 setScoreboardDataList(data);
             } catch (error) {
@@ -20,18 +20,12 @@ const ScoreboardGrid = () => {
 
         fetchData();
 
-        // Set up automatic refresh for live games every 30 seconds
-        const liveGames = scoreboardDataList.filter(item => item.home_score !== undefined);
-        if (liveGames.length > 0) {
-            const refreshInterval = setInterval(() => {
-                fetchData();
-            }, 30000); // Refresh every 30 seconds
+        // Set up automatic refresh every 1 minute
+        const refreshInterval = setInterval(fetchData, 60000); // 1 minute (60000 milliseconds)
 
-            return () => {
-                clearInterval(refreshInterval); // Clear the interval on component unmount
-            };
-        }
-    }, [scoreboardDataList]); // Trigger the effect whenever scoreboardDataList changes
+        // Clear the interval when the component is unmounted or if there's a navigation
+        return () => clearInterval(refreshInterval);
+    }, []);
 
     return (
         <div className="scoreboard-grid">
