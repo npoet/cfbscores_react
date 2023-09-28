@@ -4,68 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
-    /* Adjust alignment based on your preference */
     gap: 20px;
     margin: 10px;
     background-color: black;
 }
-
-.scoreboard {
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: rgb(54, 54, 54);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    color: black;
-    width: calc(20% - 20px);
-    /* Each scoreboard takes x% width minus gap */
-    margin-bottom: 5px;
-    /* Ensure a gap between rows */
-}
-
-.team {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.team img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-}
-
-.team .info {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.team h2 {
-    margin: 0;
-    font-size: 20px;
-    color: white;
-}
-
-.team p {
-    margin: 0;
-    font-size: 16px;
-    color: white;
-}
-
-.versus {
-    font-size: 24px;
-    margin: 5px 0;
-    color: white;
-    text-align: center;
-}
-
-.game-details p {
-    font-size: 14px;
-    color: white;
-    text-align: center;
-}
-
-/* Add more styles as needed */

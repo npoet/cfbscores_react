@@ -1,0 +1,60 @@
+/* Scoreboard.css */
+
+.scoreboard {
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: rgb(54, 54, 54);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    color: black;
+    min-width: 275px;
+    min-height: 255px;
+    /* Each scoreboard takes x% width minus gap */
+    margin-bottom: 5px;
+    /* Ensure a gap between rows */
+}
+
+.team {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.team img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.team .info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.team h2 {
+    margin: 0;
+    font-size: 20px;
+    color: white;
+}
+
+.team p {
+    margin: 0;
+    font-size: 16px;
+    color: white;
+}
+
+.versus {
+    font-size: 24px;
+    margin: 5px 0;
+    color: white;
+    text-align: center;
+}
+
+.game-details p {
+    font-size: 14px;
+    color: white;
+    text-align: center;
+}
