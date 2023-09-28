@@ -4,9 +4,7 @@ import React from 'react';
 import LiveGame from './LiveGame'
 import Scheduled from './Scheduled'
 
-const Scoreboard = ({ data }) => {
-    const isLive = data.home_score !== undefined;
-
+const Scoreboard = ({ data, isLive }) => {
     return (
         <div className="scoreboard">
             {isLive ? (
