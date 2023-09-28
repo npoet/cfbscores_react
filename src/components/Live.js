@@ -1,6 +1,7 @@
 // Live.js
 
 import React from 'react';
+import './Scoreboard.css';
 
 const tvChannelIds = {
     "ABC": 19570,

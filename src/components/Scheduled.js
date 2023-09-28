@@ -1,6 +1,7 @@
 // Scheduled.js
 
 import React from 'react';
+import './Scoreboard.css';
 
 const Scheduled = ({ data }) => {
     const {
