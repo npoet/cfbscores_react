@@ -1,4 +1,4 @@
-// LiveGame.js
+// Live.js
 
 import React from 'react';
 
@@ -20,7 +20,7 @@ const tvChannelIds = {
     "NBC": 19568
 };
 
-const LiveGame = ({ data }) => {
+const Live = ({ data }) => {
     const {
         home,
         home_logo,
@@ -73,4 +73,4 @@ const LiveGame = ({ data }) => {
     );
 };
 
-export default LiveGame;
+export default Live;
