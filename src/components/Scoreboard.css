@@ -47,14 +47,40 @@
 }
 
 .versus {
-    font-size: 24px;
-    margin: 5px 0;
+    font-size: 22px;
+    margin: 10px 0;
     color: white;
     text-align: center;
 }
 
 .game-details p {
-    font-size: 14px;
+    font-size: 16px;
     color: white;
     text-align: center;
+}
+
+.game-clock {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.score {
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 5px 0;
+    color: white;
+    text-align: right;
+    width: 100%
+}
+
+.poss {
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    text-align: right;
+    width: 25%;
 }
