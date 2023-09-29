@@ -6,10 +6,12 @@ import './Scoreboard.css';
 const Scheduled = ({ data }) => {
     const {
         home,
+        home_site,
         home_mascot,
         home_logo,
         home_record,
         away,
+        away_site,
         away_mascot,
         away_logo,
         away_record,
@@ -23,7 +25,7 @@ const Scheduled = ({ data }) => {
             <div className="team">
                 <img src={away_logo} alt={`${away} Logo`} />
                 <div className="info">
-                    <h2>{away}</h2>
+                    <h2><a href={away_site} target="_blank" rel="noopener noreferrer">{away}</a></h2>
                     <p>{away_mascot}</p>
                     <p>{away_record}</p>
                 </div>
@@ -32,7 +34,7 @@ const Scheduled = ({ data }) => {
             <div className="team">
                 <img src={home_logo} alt={`${home} Logo`} />
                 <div className="info">
-                    <h2>{home}</h2>
+                    <h2><a href={home_site} target="_blank" rel="noopener noreferrer">{home}</a></h2>
                     <p>{home_mascot}</p>
                     <p>{home_record}</p>
                 </div>
