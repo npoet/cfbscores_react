@@ -3,7 +3,7 @@
 .scoreboard-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: left;
+    justify-content: flex-start;
     gap: 20px;
     margin: 10px;
     background-color: black;

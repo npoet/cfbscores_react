@@ -10,16 +10,50 @@
     align-items: left;
     color: black;
     min-width: 275px;
-    min-height: 255px;
+    min-height: 260px;
     /* Each scoreboard takes x% width minus gap */
     margin-bottom: 5px;
     /* Ensure a gap between rows */
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+}
+
+.scoreboard:hover {
+    box-shadow: 0 0 11px rgb(255, 255, 255);
+}
+
+.scoreboard.expanded {
+    min-height: 550px;
+    max-width: 275px;
+    /* Adjust the desired maximum height */
+    overflow-y: auto;
+    width: 100%;
+}
+
+.scoreboard.expanded .stats {
+    display: block;
+}
+
+/* Styles for the additional information */
+.additional-info {
+    margin-top: 20px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
 }
 
 .team {
     display: flex;
+    flex-direction: row;
     align-items: center;
     margin-bottom: 10px;
+}
+
+.name {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .team img {
@@ -71,7 +105,6 @@
 .score {
     font-size: 30px;
     font-weight: bold;
-    margin-left: 5px 0;
     color: white;
     text-align: right;
     width: 100%
@@ -83,4 +116,45 @@
     color: white;
     text-align: right;
     width: 25%;
+}
+
+.stats {
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+}
+
+.stat {
+    margin-top: 10px;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    text-wrap: wrap;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: rgb(54, 54, 54);
+}
+
+.top-bar title {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 24px;
+}
+
+.top-bar button {
+    padding: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.top-bar button:last-child {
+    margin-right: 0;
 }
