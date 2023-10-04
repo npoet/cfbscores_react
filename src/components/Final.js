@@ -7,9 +7,14 @@ const Final = ({ data }) => {
         home,
         home_logo,
         home_record,
+        home_score,
         away,
         away_logo,
-        away_record
+        away_score,
+        away_record,
+        pass_leader,
+        rush_leader,
+        rec_leader
     } = data;
 
     return (
@@ -22,7 +27,6 @@ const Final = ({ data }) => {
                 </div>
                 <div className="score">{away_score}</div>
             </div>
-            <p>{away_record}</p>
             <div className="versus">F</div>
             <div className="team">
                 <img src={home_logo} alt={`${home} Logo`} />
@@ -32,7 +36,11 @@ const Final = ({ data }) => {
                 </div>
                 <div className="score">{home_score}</div>
             </div>
-            <p>{home_record}</p>
+            <div className="stats">
+                <p>PASS: {pass_leader}</p>
+                <p>RUSH: {rush_leader}</p>
+                <p>REC: {rec_leader}</p>
+            </div>
         </div>
     );
 };

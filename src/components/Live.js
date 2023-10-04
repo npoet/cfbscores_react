@@ -27,7 +27,9 @@ const Live = ({ data }) => {
             <div className="team">
                 <img src={away_logo} alt={`${away} Logo`} />
                 <div className="info">
-                    <h2><a href={away_site} target="_blank" rel="noopener noreferrer">{away}</a></h2>
+                    <div className="name">
+                        <h2><a href={away_site} target="_blank" rel="noopener noreferrer">{away}</a></h2>
+                    </div>
                     <p>{away_record}</p>
                 </div>
                 {possession == "away" && <div className="poss">{'\u2B24'}</div>}
