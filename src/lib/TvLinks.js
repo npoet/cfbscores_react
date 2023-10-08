@@ -17,7 +17,8 @@ const tvChannelIds = {
     "CBS": 19567,
     "CBSSN": 69495,
     "NFL NET": 45409,
-    "NBC": 19568
+    "NBC": 19568,
+    "Off Air": 118905
 };
 
 const GenerateTVLink = (channel) => {
