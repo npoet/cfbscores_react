@@ -2,6 +2,12 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Install
+#### MacOS
+* Install Homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"` and/or
+* `brew install nvm`
+* `nvm install node`
+
 ## Getting Started
 
 First, run the development server:
