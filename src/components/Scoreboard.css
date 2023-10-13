@@ -9,10 +9,10 @@
     flex-direction: column;
     align-items: left;
     color: black;
-    min-width: 275px;
+    min-width: 274px;
     min-height: 260px;
     /* Each scoreboard takes x% width minus gap */
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     /* Ensure a gap between rows */
     cursor: pointer;
     box-sizing: border-box;
@@ -52,7 +52,8 @@
 .name {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    text-wrap: nowrap;
     align-items: center;
 }
 
