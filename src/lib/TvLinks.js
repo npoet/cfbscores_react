@@ -18,11 +18,15 @@ const tvChannelIds = {
     "CBSSN": 69495,
     "NFL NET": 45409,
     "NBC": 19568,
-    "Off Air": 118905
+    "Off Air": 118905,
+    "ESPN+": "https://www.espn.com/watch/collections/44763/ncaa-football-on-espn+-live-upcoming"
 };
 
 const GenerateTVLink = (channel) => {
-    if (tvChannelIds[channel]) {
+    if (channel == "ESPN+") {
+        return <a href={tvChannelIds['ESPN+']} target="_blank" rel="noopener noreferrer">{channel}</a>;
+    }
+    else if (tvChannelIds[channel]) {
         const url = `https://www.fubo.tv/watch?channelId=${tvChannelIds[channel]}`;
         return <a href={url} target="_blank" rel="noopener noreferrer">{channel}</a>;
     }
