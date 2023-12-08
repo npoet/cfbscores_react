@@ -9,7 +9,8 @@ const TopBar = ({ onExpandAll, onFilterChange, onFilterReset }) => {
             <button onClick={onFilterReset}>Show All</button>
             <title>FBscores</title>
             <button onClick={() => onFilterChange('NFL')}>Show NFL</button>
-            <button onClick={() => onFilterChange('College')}>Show College</button>
+            <button onClick={() => onFilterChange('CFB')}>Show CFB</button>
+            <button onClick={() => onFilterChange('CBB')}>Show CBB</button>
         </div>
     );
 };
