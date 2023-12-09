@@ -37,10 +37,6 @@ const ScoreboardGrid = () => {
         setExpandedScoreboards(newExpandedScoreboards);
     };
 
-    const handleExpandAll = () => {
-        setExpandedScoreboards(Array(scoreboardDataList.length));
-    };
-
     const handleFilterChange = (category) => {
         setFilter(category);
     };
@@ -56,7 +52,6 @@ const ScoreboardGrid = () => {
     return (
         <div>
             <TopBar
-                onExpandAll={handleExpandAll}
                 onFilterChange={handleFilterChange}
                 onFilterReset={handleFilterReset}
             />
