@@ -25,7 +25,7 @@ const Live = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
     return (
         <div className="live-game">
             <div className="team">
-                <img src={away_logo} alt={`${away} Logo`} onClick={onAwayLogoClick} />
+                <img src={away_logo} alt={`${away} Logo`} onClick={() => onAwayLogoClick} />
                 <div className="info">
                     <div className="name">
                         <h2><a href={away_site} target="_blank" rel="noopener noreferrer">{away}</a></h2>
@@ -37,7 +37,7 @@ const Live = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
             </div>
             <div className="versus">VS</div>
             <div className="team">
-                <img src={home_logo} alt={`${home} Logo`} onClick={onHomeLogoClick} />
+                <img src={home_logo} alt={`${home} Logo`} onClick={() => onHomeLogoClick} />
                 <div className="info">
                     <h2><a href={home_site} target="_blank" rel="noopener noreferrer">{home}</a></h2>
                     <p>{home_record}</p>
