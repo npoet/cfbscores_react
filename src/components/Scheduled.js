@@ -3,13 +3,15 @@
 import React from 'react';
 import './Scoreboard.css';
 
-const Scheduled = ({ data }) => {
+const Scheduled = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
     const {
+        home_id,
         home,
         home_site,
         home_mascot,
         home_logo,
         home_record,
+        away_id,
         away,
         away_site,
         away_mascot,
@@ -23,7 +25,7 @@ const Scheduled = ({ data }) => {
     return (
         <div className="scheduled-game">
             <div className="team">
-                <img src={away_logo} alt={`${away} Logo`} />
+                <img src={away_logo} alt={`${away} Logo`} onClick={() => onAwayLogoClick(data)}/>
                 <div className="info">
                     <h2><a href={away_site} target="_blank" rel="noopener noreferrer">{away}</a></h2>
                     <p>{away_mascot}</p>
@@ -32,7 +34,7 @@ const Scheduled = ({ data }) => {
             </div>
             <div className="versus">VS</div>
             <div className="team">
-                <img src={home_logo} alt={`${home} Logo`} />
+                <img src={home_logo} alt={`${home} Logo`} onClick={() => onHomeLogoClick(data)}/>
                 <div className="info">
                     <h2><a href={home_site} target="_blank" rel="noopener noreferrer">{home}</a></h2>
                     <p>{home_mascot}</p>
