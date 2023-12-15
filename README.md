@@ -1,12 +1,9 @@
 # CFBScores React
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+A basic scoreboard app + team statistical reference for College Football and more. Powered by [cfbscores_py](https://github.com/npoet/cfbscores_py)
 
 ## Install
-#### MacOS
-* Install Homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"` and/or
-* `brew install nvm`
-* `nvm install node`
+Requires the latest LTS version (or above) of Node.js + Next.js (can be installed via chosen node pm)
 
 ## Getting Started
 
@@ -23,8 +20,3 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
