@@ -7,6 +7,7 @@ const TeamInfoPopup = ({ teamInfo, onClose }) => {
     const { team_id, team_logo, team_mascot, team_record } = teamInfo;
     const [additionalInfo, setAdditionalInfo] = useState(null);
     const [seasonData, setSeasonData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchTeamInfo = async () => {
@@ -16,6 +17,9 @@ const TeamInfoPopup = ({ teamInfo, onClose }) => {
                 setAdditionalInfo(data1);
             } catch (error) {
                 console.error('Error fetching team information:', error);
+            } finally {
+                // Set loading state to false once all data is loaded
+                setIsLoading(false);
             }
         };
 
@@ -33,6 +37,11 @@ const TeamInfoPopup = ({ teamInfo, onClose }) => {
         fetchTeamInfo();
         fetchSeasonData();
     }, [team_id]);
+
+        // Display loading message or render content based on loading state
+    if (isLoading) {
+        return <div className="team-info-popup-overlay" onClick={onClose}></div>;
+    }
 
     return (
         <div className="team-info-popup-overlay" onClick={onClose}>
