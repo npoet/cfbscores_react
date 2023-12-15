@@ -19,34 +19,34 @@ const Scoreboard = ({ data, isLive, isFinal }) => {
 
     const onHomeLogoClick = () => {
         const { home_id, home_logo, home_mascot, home_record } = data;
-    
+
         // Check if the game type is "FBS" before opening the popup
         if (data.type === 'FBS') {
-          setTeamInfoPopup({
-            team_id: home_id,
-            team_logo: home_logo,
-            team_mascot: home_mascot,
-            team_record: home_record,
-          });
+            setTeamInfoPopup({
+                team_id: home_id,
+                team_logo: home_logo,
+                team_mascot: home_mascot,
+                team_record: home_record,
+            });
         }
-      };
-    
-      const onAwayLogoClick = () => {
+    };
+
+    const onAwayLogoClick = () => {
         const { away_id, away_logo, away_mascot, away_record } = data;
-    
+
         // Check if the game type is "FBS" before opening the popup
         if (data.type === 'FBS') {
-          setTeamInfoPopup({
-            team_id: away_id,
-            team_logo: away_logo,
-            team_mascot: away_mascot,
-            team_record: away_record,
-          });
+            setTeamInfoPopup({
+                team_id: away_id,
+                team_logo: away_logo,
+                team_mascot: away_mascot,
+                team_record: away_record,
+            });
         }
-      };
-    
-    
-    
+    };
+
+
+
     const closeTeamInfoPopup = () => {
         setTeamInfoPopup(null);
     };

@@ -37,7 +37,7 @@ const Live = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
             </div>
             <div className="versus">VS</div>
             <div className="team">
-                <img src={home_logo} alt={`${home} Logo`} onClick={onHomeLogoClick}/>
+                <img src={home_logo} alt={`${home} Logo`} onClick={onHomeLogoClick} />
                 <div className="info">
                     <h2><a href={home_site} target="_blank" rel="noopener noreferrer">{home}</a></h2>
                     <p>{home_record}</p>
