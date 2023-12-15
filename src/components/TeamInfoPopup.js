@@ -84,8 +84,8 @@ const TeamInfoPopup = ({ teamInfo, onClose }) => {
                                         <th>Date</th>
                                         <th>Home</th>
                                         <th>Away</th>
-                                        <th>Home Score</th>
-                                        <th>Away Score</th>
+                                        <th>Home Pts</th>
+                                        <th>Away Pts</th>
                                     </tr>
                                 </thead>
                                 <tbody>
