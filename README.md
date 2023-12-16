@@ -21,4 +21,11 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+#### Examples:
+Main Page (All Sports):
+![main page example](./public/cfbscores_main.PNG)
+Team Info Overlay (FBS):
+![michigan overlay example](./public/cfbscores_overlay.PNG)
+
+
 This app is provided as-is and was created solely for my personal use. Future implementation plans include expanding sport and TV provider support, as well as additional statistical sources. Suggestions are welcome.
