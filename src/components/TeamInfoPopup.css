@@ -53,6 +53,10 @@
     color: white;
 }
 
+.team-details h3 {
+    margin-top: 15px;
+}
+
 .team-info-content {
     display: flex;
     justify-content: space-between;

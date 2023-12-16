@@ -7,6 +7,7 @@ const TeamInfoPopup = ({ teamInfo, onClose }) => {
     const { team_id, team_logo, team_mascot, team_record } = teamInfo;
     const [additionalInfo, setAdditionalInfo] = useState(null);
     const [seasonData, setSeasonData] = useState(null);
+    const [recordData, setRecordData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -18,12 +19,10 @@ const TeamInfoPopup = ({ teamInfo, onClose }) => {
             } catch (error) {
                 console.error('Error fetching team information:', error);
             } finally {
-                // Set loading state to false once all data is loaded
                 setIsLoading(false);
             }
         };
 
-        // Fetch season data
         const fetchSeasonData = async () => {
             try {
                 const response2 = await fetch(`http://localhost:8000/season/${encodeURIComponent(team_id)}`);
@@ -34,8 +33,19 @@ const TeamInfoPopup = ({ teamInfo, onClose }) => {
             }
         };
 
+        const fetchRecordData = async () => {
+            try {
+                const response3 = await fetch(`http://localhost:8000/record/${encodeURIComponent(team_id)}`);
+                const data3 = await response3.json();
+                setRecordData(data3);
+            } catch (error) {
+                console.error('Error fetching season data:', error);
+            }
+        }
+
         fetchTeamInfo();
         fetchSeasonData();
+        fetchRecordData();
     }, [team_id]);
 
         // Display loading message or render content based on loading state
@@ -52,14 +62,20 @@ const TeamInfoPopup = ({ teamInfo, onClose }) => {
                     </span>
                 </div>
                 <div className="team-info-content">
-                    <div className="left-column">
-                        <img src={team_logo} alt={`${team_id} Logo`} className="team-logo" />
-                        <div className="team-details">
-                            <h2>{team_record}</h2>
-                            <h1>{team_id}</h1>
-                            <h3>{team_mascot}</h3>
+                    {recordData && (
+                        <div className="left-column">
+                            <img src={team_logo} alt={`${team_id} Logo`} className="team-logo" />
+                            <div className="team-details">
+                                <h2>{team_record}</h2>
+                                <h1>{team_id}</h1>
+                                <h4>{team_mascot}</h4>
+                                <h3>Expected Wins: {recordData.exp_wins}</h3>
+                                <h3>Conf. Record: {recordData.conference_wl}</h3>
+                                <h3>Home Record: {recordData.home_wl}</h3>
+                                <h3>Away Record: {recordData.away_wl}</h3>
+                            </div>
                         </div>
-                    </div>
+                    )}
                     {additionalInfo && (
                         <div className="center-column">
                             <h2>Team Ratings</h2>
