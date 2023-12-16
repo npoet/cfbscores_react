@@ -25,7 +25,7 @@ const Live = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
     return (
         <div className="live-game">
             <div className="team">
-                <img src={away_logo} alt={`${away} Logo`} onClick={() => onAwayLogoClick} />
+                <img src={away_logo} alt={`${away} Logo`} onClick={() => onAwayLogoClick(data)} />
                 <div className="info">
                     <div className="name">
                         <h2><a href={away_site} target="_blank" rel="noopener noreferrer">{away}</a></h2>
@@ -37,7 +37,7 @@ const Live = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
             </div>
             <div className="versus">VS</div>
             <div className="team">
-                <img src={home_logo} alt={`${home} Logo`} onClick={() => onHomeLogoClick} />
+                <img src={home_logo} alt={`${home} Logo`} onClick={() => onHomeLogoClick(data)} />
                 <div className="info">
                     <h2><a href={home_site} target="_blank" rel="noopener noreferrer">{home}</a></h2>
                     <p>{home_record}</p>
@@ -45,8 +45,8 @@ const Live = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
                 {possession == "home" && <div className="poss">{'\u2B24'}</div>}
                 <div className="score">{home_score}</div>
             </div>
-            {ball_on != "" && <div className="game-clock">{time}  |  {ball_on}</div>}
-            {ball_on == "" && <div className="game-clock">{time}</div>}
+            {ball_on != null && <div className="game-clock">{time}  |  {ball_on}</div>}
+            {ball_on == null && <div className="game-clock">{time}</div>}
 
             <div className="game-details">
                 <p>TV: {GenerateTVLink(tv)}</p>
