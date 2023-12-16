@@ -46,14 +46,14 @@ const Stats = ({ data, isLive }) => {
             ) : (
                 <div>
                     <div className = "stat">
-                        <h3><p>{ away } { away_record } ({away_conf})</p></h3 >
+                        <h3><p>{ away } { away_record }</p></h3 >
                         <p>Leaders:</p>
                         <p>{away_pass}</p>
                         <p>{away_rush}</p>
                         <p>{away_rec}</p>
                     </div >
                     <div className="stat">
-                        <h3><p>{home} {home_record} ({home_conf})</p></h3>
+                        <h3><p>{home} {home_record}</p></h3>
                         <p>Leaders:</p>
                         <p>{home_pass}</p>
                         <p>{home_rush}</p>
