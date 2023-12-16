@@ -64,11 +64,11 @@
 }
 
 .left-column {
-    flex: 1;
+    flex: 0.75;
 }
 
 .center-column {
-    flex: 1;
+    flex: 0.75;
 }
 
 .center-column p,
@@ -90,7 +90,7 @@ h3 {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 th,
