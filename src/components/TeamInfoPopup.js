@@ -88,7 +88,7 @@ const TeamInfoPopup = ({ teamInfo, onClose }) => {
                             <p>FPI Rating: {additionalInfo.fpi_ovr_rating}</p>
                             <p>FPI SoS Rank: {additionalInfo.fpi_sos}</p>
                             <p>FPI Game Control Rank: {additionalInfo.fpi_game_control}</p>
-                            {/* Add more fields as needed */}
+                            <p>SRS Rating: {additionalInfo.srs_ovr_rating}</p>
                         </div>
                     )}
                     {seasonData && (
@@ -102,6 +102,7 @@ const TeamInfoPopup = ({ teamInfo, onClose }) => {
                                         <th>Away</th>
                                         <th>Home Pts</th>
                                         <th>Away Pts</th>
+                                        <th>PG Win%</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -112,6 +113,7 @@ const TeamInfoPopup = ({ teamInfo, onClose }) => {
                                             <td>{game.away}</td>
                                             <td>{game.home_score}</td>
                                             <td>{game.away_score}</td>
+                                            <td>{game.pg_win_prob}</td>
                                         </tr>
                                     ))}
                                 </tbody>
