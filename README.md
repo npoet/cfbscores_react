@@ -19,7 +19,7 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. Requires [cfbscores_py](https://github.com/npoet/cfbscores_py) running at localhost:8000 to display content as shown below.
 
 #### Examples:
 Main Page (All Sports):
