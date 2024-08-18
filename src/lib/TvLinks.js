@@ -18,6 +18,7 @@ const tvChannelIds = {
     "CBSSN": 69495,
     "NFL NET": 45409,
     "NBC": 19568,
+    "USA Net": 85678,
     "Off Air": 118905,
     "ESPN+": "https://www.espn.com/watch/collections/44763/ncaa-football-on-espn+-live-upcoming"
 };
