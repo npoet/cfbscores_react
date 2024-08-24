@@ -10,7 +10,7 @@ const TopBar = ({ onFilterChange, onFilterReset }) => {
             <button onClick={() => onFilterChange('NFL')}>NFL</button>
             <button onClick={() => onFilterChange('FBS')}>FBS</button>
             <button onClick={() => onFilterChange('FCS')}>FCS</button>
-            <button onClick={() => onFilterChange('CBB')}>CBB</button>
+            <button onClick={() => onFilterChange('EPL')}>EPL</button>
         </div>
     );
 };
