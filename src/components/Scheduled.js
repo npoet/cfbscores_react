@@ -21,6 +21,9 @@ const Scheduled = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
         type
     } = data;
 
+    // Path to the default logo image
+    const defaultLogo = '/helmet.png';
+
     // Function to determine the color based on recent form character
     const getFormColor = (char) => {
         if (type === "EPL") {
@@ -58,7 +61,7 @@ const Scheduled = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
         <div className="scheduled-game">
             <div className="team">
                 <img
-                    src={away_logo}
+                    src={away_logo || defaultLogo}
                     alt={`${away} Logo`}
                     onClick={() => onAwayLogoClick(data)}
                     style={{ cursor: 'pointer' }}
@@ -76,7 +79,7 @@ const Scheduled = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
             <div className="versus">VS</div>
             <div className="team">
                 <img
-                    src={home_logo}
+                    src={home_logo || defaultLogo}
                     alt={`${home} Logo`}
                     onClick={() => onHomeLogoClick(data)}
                     style={{ cursor: 'pointer' }}
