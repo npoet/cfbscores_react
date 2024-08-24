@@ -20,7 +20,8 @@ const tvChannelIds = {
     "NBC": 19568,
     "USA Net": 85678,
     "Off Air": 118905,
-    "ESPN+": "https://www.espn.com/watch/collections/44763/ncaa-football-on-espn+-live-upcoming"
+    "ESPN+": "https://www.espn.com/watch/collections/44763/ncaa-football-on-espn+-live-upcoming",
+    "Peacock": "https://www.peacocktv.com/watch/sports/highlights"
 };
 
 const GenerateTVLink = (channel) => {
