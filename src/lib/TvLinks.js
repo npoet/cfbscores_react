@@ -29,7 +29,7 @@ const GenerateTVLink = (channel) => {
         return <a href={tvChannelIds['ESPN+']} target="_blank" rel="noopener noreferrer">{channel}</a>;
     }
     else if (tvChannelIds[channel]) {
-        const url = `https://www.fubo.tv/watch?channelId=${tvChannelIds[channel]}`;
+        const url = `https://www.fubo.tv/p/watch?channelId=${tvChannelIds[channel]}%26type%3Dlive`;
         return <a href={url} target="_blank" rel="noopener noreferrer">{channel}</a>;
     }
     return channel;
