@@ -45,9 +45,17 @@ const ScoreboardGrid = () => {
         setFilter(null);
     };
 
-    const filteredScoreboards = filter
-        ? scoreboardDataList.filter((scoreboard) => scoreboard.type === filter)
-        : scoreboardDataList;
+    const filteredScoreboards = scoreboardDataList.filter((scoreboard) => {
+        // Filter by category if a filter is set
+        if (filter && scoreboard.type !== filter) return false;
+
+        // Get the game date and omit if before today, final scores included only for the day games occurred
+        const gameDate = new Date(scoreboard.date);
+        const today = new Date();
+        gameDate.setHours(0, 0, 0, 0);
+        today.setHours(0, 0, 0, 0);
+        return gameDate >= today;
+    });
 
     return (
         <div>
@@ -58,9 +66,9 @@ const ScoreboardGrid = () => {
             <div className="scoreboard-grid">
                 {filteredScoreboards.map((scoreboardData, index) => {
                     var isLive = scoreboardData.home_score !== undefined;
-                    const isFinal = scoreboardData.time == "Final";
+                    const isFinal = scoreboardData.time === "Final";
                     if (isFinal) {
-                        isLive = false
+                        isLive = false;
                     }
                     return (
                         <div key={index} onClick={() => handleScoreboardClick(index)}>
