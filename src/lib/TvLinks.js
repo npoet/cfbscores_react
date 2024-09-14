@@ -7,7 +7,7 @@ const tvChannelIds = {
     "ESPN": 10179,
     "ESPN2": 12444,
     "ESPNU": 71094,
-    "SECN": 1021370001,
+    "SEC Network": 1021370001,
     "ACCN": 1263880001,
     "FOX": 20450,
     "FS1": 94653,
@@ -29,7 +29,7 @@ const GenerateTVLink = (channel) => {
         return <a href={tvChannelIds['ESPN+']} target="_blank" rel="noopener noreferrer">{channel}</a>;
     }
     else if (tvChannelIds[channel]) {
-        const url = `https://www.fubo.tv/watch?channelId=${tvChannelIds[channel]}`;
+        const url = `https://www.fubo.tv/watch?channelId=${tvChannelIds[channel]}%26type%3Dlive`;
         return <a href={url} target="_blank" rel="noopener noreferrer">{channel}</a>;
     }
     return channel;
