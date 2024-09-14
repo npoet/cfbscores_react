@@ -93,7 +93,7 @@ const TeamInfoPopup = ({ teamInfo, onClose }) => {
                     )}
                     {seasonData && (
                         <div className="right-column">
-                            <h2>2023 Schedule</h2>
+                            <h2>2024 Schedule</h2>
                             <table>
                                 <thead>
                                     <tr>
