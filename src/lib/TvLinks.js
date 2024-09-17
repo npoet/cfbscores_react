@@ -7,7 +7,7 @@ const tvChannelIds = {
     "ESPN": 10179,
     "ESPN2": 12444,
     "ESPNU": 71094,
-    "SECN": 1021370001,
+    "SEC Network": 1021370001,
     "ACCN": 1263880001,
     "FOX": 20450,
     "FS1": 94653,
