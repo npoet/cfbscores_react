@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Scoreboard from './Scoreboard';
 import './ScoreboardGrid.css';
-import TopBar from './TopBar'
+import TopBar from './TopBar';
 
 const ScoreboardGrid = () => {
     const [scoreboardDataList, setScoreboardDataList] = useState([]);
@@ -47,7 +47,15 @@ const ScoreboardGrid = () => {
 
     const filteredScoreboards = scoreboardDataList.filter((scoreboard) => {
         // Filter by category if a filter is set
-        if (filter && scoreboard.type !== filter) return false;
+        if (filter) {
+            if (Array.isArray(filter)) {
+                // If the filter is an array (e.g., "All Football"), check if the scoreboard type matches any of the types
+                if (!filter.includes(scoreboard.type)) return false;
+            } else {
+                // If the filter is a single category
+                if (scoreboard.type !== filter) return false;
+            }
+        }
 
         // Get the game date and omit if before today, final scores included only for the day games occurred
         const gameDate = new Date(scoreboard.date);
