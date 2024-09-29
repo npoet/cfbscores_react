@@ -3,7 +3,7 @@
 import React from 'react';
 import './Scoreboard.css';
 
-const Stats = ({ data, isLive }) => {
+const Stats = ({ data, isLive, isFinal }) => {
     const {
         home,
         home_record,
@@ -21,7 +21,10 @@ const Stats = ({ data, isLive }) => {
         rush_leader,
         rec_leader,
         last_play,
-        win_prob
+        win_prob,
+        gamecast,
+        box_score,
+        highlights
     } = data;
     
     return (
@@ -33,25 +36,39 @@ const Stats = ({ data, isLive }) => {
                         <p>{pass_leader}</p>
                         <p>{rush_leader}</p>
                         <p>{rec_leader}</p>
-                    </div >
+                    </div>
                     <div className="stat">
                         <h3><p>Last Play:</p></h3>
                         <p>{last_play}</p>
-                    </div >
+                    </div>
                     <div className="stat">
                         <h3><p>Win Probability:</p></h3>
                         <p>{win_prob}</p>
-                    </div >
+                    </div>
+                </div>
+            ) : isFinal ? (
+                <div>
+                    <div className="stat">
+                        <h3><p>Game Leaders:</p></h3>
+                        <p>{pass_leader}</p>
+                        <p>{rush_leader}</p>
+                        <p>{rec_leader}</p>
+                    </div>
+                    <div className="stat">
+                        <h3><a href={gamecast} target="_blank" rel="noopener noreferrer">Gamecast</a></h3>
+                        <h3><a href={box_score} target="_blank" rel="noopener noreferrer">Box Score</a></h3>
+                        <h3><a href={highlights} target="_blank" rel="noopener noreferrer">Highlights</a></h3>
+                    </div>
                 </div>
             ) : (
                 <div>
-                    <div className = "stat">
-                        <h3><p>{ away } { away_record }</p></h3 >
+                    <div className="stat">
+                        <h3><p>{away} {away_record}</p></h3>
                         <p>Leaders:</p>
                         <p>{away_pass}</p>
                         <p>{away_rush}</p>
                         <p>{away_rec}</p>
-                    </div >
+                    </div>
                     <div className="stat">
                         <h3><p>{home} {home_record}</p></h3>
                         <p>Leaders:</p>
@@ -61,9 +78,9 @@ const Stats = ({ data, isLive }) => {
                     </div>
                 </div>
             )}
-            
         </div>
-    )
+    );
+
 };
 
 export default Stats;

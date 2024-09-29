@@ -1,5 +1,3 @@
-// TeamInfoPopup.js
-
 import React, { useState, useEffect } from 'react';
 import './TeamInfoPopup.css';
 
@@ -11,46 +9,38 @@ const TeamInfoPopup = ({ teamInfo, onClose }) => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const fetchTeamInfo = async () => {
+        const fetchData = async () => {
             try {
-                const response1 = await fetch(`http://localhost:8000/team/${encodeURIComponent(team_id)}`);
-                const data1 = await response1.json();
-                setAdditionalInfo(data1);
+                // Fetch all data concurrently
+                const [teamResponse, seasonResponse, recordResponse] = await Promise.all([
+                    fetch(`http://localhost:8000/team/${encodeURIComponent(team_id)}`).then(res => res.json()),
+                    fetch(`http://localhost:8000/season/${encodeURIComponent(team_id)}`).then(res => res.json()),
+                    fetch(`http://localhost:8000/record/${encodeURIComponent(team_id)}`).then(res => res.json()),
+                ]);
+
+                // Set all the states with the fetched data
+                setAdditionalInfo(teamResponse);
+                setSeasonData(seasonResponse);
+                setRecordData(recordResponse);
             } catch (error) {
-                console.error('Error fetching team information:', error);
+                console.error('Error fetching data:', error);
             } finally {
                 setIsLoading(false);
             }
         };
 
-        const fetchSeasonData = async () => {
-            try {
-                const response2 = await fetch(`http://localhost:8000/season/${encodeURIComponent(team_id)}`);
-                const data2 = await response2.json();
-                setSeasonData(data2);
-            } catch (error) {
-                console.error('Error fetching season data:', error);
-            }
-        };
-
-        const fetchRecordData = async () => {
-            try {
-                const response3 = await fetch(`http://localhost:8000/record/${encodeURIComponent(team_id)}`);
-                const data3 = await response3.json();
-                setRecordData(data3);
-            } catch (error) {
-                console.error('Error fetching season data:', error);
-            }
-        }
-
-        fetchTeamInfo();
-        fetchSeasonData();
-        fetchRecordData();
+        fetchData();
     }, [team_id]);
 
-        // Display loading message or render content based on loading state
+    // Display loading indicator while fetching data
     if (isLoading) {
-        return <div className="team-info-popup-overlay" onClick={onClose}></div>;
+        return (
+            <div className="team-info-popup-overlay" onClick={onClose}>
+                <div className="team-info-popup" onClick={(e) => e.stopPropagation()}>
+                    <div className="loading-indicator">Loading...</div>
+                </div>
+            </div>
+        );
     }
 
     return (
