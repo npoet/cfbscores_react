@@ -14,7 +14,9 @@ const Final = ({ data }) => {
         away_record,
         pass_leader,
         rush_leader,
-        rec_leader
+        rec_leader,
+        headline,
+        time
     } = data;
 
     return (
@@ -27,7 +29,7 @@ const Final = ({ data }) => {
                 </div>
                 <div className="score">{away_score}</div>
             </div>
-            <div className="versus">F</div>
+            <div className="versus">{time}</div>
             <div className="team">
                 <img src={home_logo} alt={`${home} Logo`} />
                 <div className="info">
@@ -37,9 +39,15 @@ const Final = ({ data }) => {
                 <div className="score">{home_score}</div>
             </div>
             <div className="stats">
-                <p>PASS: {pass_leader}</p>
-                <p>RUSH: {rush_leader}</p>
-                <p>REC: {rec_leader}</p>
+                {headline ? (
+                    <p>{headline}</p>
+                ) : (
+                    <div>
+                        <p>{pass_leader}</p>
+                        <p>{rush_leader}</p>
+                        <p>{rec_leader}</p>
+                    </div>
+                )}
             </div>
         </div>
     );
