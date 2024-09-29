@@ -1,9 +1,10 @@
-// ScoreboardGrid.js
-
 import React, { useState, useEffect } from 'react';
 import Scoreboard from './Scoreboard';
 import './ScoreboardGrid.css';
 import TopBar from './TopBar';
+
+// Add non-expandable game types here
+const nonExpandableTypes = ['EPL'];
 
 const ScoreboardGrid = () => {
     const [scoreboardDataList, setScoreboardDataList] = useState([]);
@@ -31,7 +32,12 @@ const ScoreboardGrid = () => {
         return () => clearInterval(refreshInterval);
     }, []);
 
-    const handleScoreboardClick = (index) => {
+    const handleScoreboardClick = (index, gameType) => {
+        // Prevent expansion if the game type is in the nonExpandableTypes array
+        if (nonExpandableTypes.includes(gameType)) {
+            return; // Do nothing if it's a non-expandable game type
+        }
+
         const newExpandedScoreboards = [...expandedScoreboards];
         newExpandedScoreboards[index] = !newExpandedScoreboards[index];
         setExpandedScoreboards(newExpandedScoreboards);
@@ -57,12 +63,25 @@ const ScoreboardGrid = () => {
             }
         }
 
-        // Get the game date and omit if before today, final scores included only for the day games occurred
         const gameDate = new Date(scoreboard.date);
         const today = new Date();
+        const fiveDaysAgo = new Date();
+        const sevenDaysFromNow = new Date();
+
+        // Set the hours to 0 for date-only comparison
         gameDate.setHours(0, 0, 0, 0);
         today.setHours(0, 0, 0, 0);
-        return gameDate >= today;
+        fiveDaysAgo.setHours(0, 0, 0, 0);
+        sevenDaysFromNow.setHours(0, 0, 0, 0);
+
+        // Adjust `fiveDaysAgo` to be 5 days before today
+        fiveDaysAgo.setDate(today.getDate() - 5);
+
+        // Adjust `sevenDaysFromNow` to be 7 days ahead of today
+        sevenDaysFromNow.setDate(today.getDate() + 7);
+
+        // Return true if the game date is within the last 5 days or up to a week in the future
+        return gameDate >= fiveDaysAgo && gameDate <= sevenDaysFromNow;
     });
 
     return (
@@ -73,13 +92,12 @@ const ScoreboardGrid = () => {
             />
             <div className="scoreboard-grid">
                 {filteredScoreboards.map((scoreboardData, index) => {
-                    var isLive = scoreboardData.home_score !== undefined;
-                    const isFinal = scoreboardData.time === "Final";
-                    if (isFinal) {
-                        isLive = false;
-                    }
+                    const gameType = scoreboardData.type; // Capture the game type
+                    const isLive = scoreboardData.home_score !== undefined && !(scoreboardData.time && (scoreboardData.time.includes("Final") || scoreboardData.time.includes("FT")));
+                    const isFinal = scoreboardData.time && (scoreboardData.time.includes("Final") || scoreboardData.time.includes("FT"));
+
                     return (
-                        <div key={index} onClick={() => handleScoreboardClick(index)}>
+                        <div key={index} onClick={() => handleScoreboardClick(index, gameType)}>
                             <Scoreboard
                                 key={index}
                                 data={scoreboardData}

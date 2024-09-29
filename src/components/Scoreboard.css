@@ -10,10 +10,10 @@
     align-items: left;
     color: black;
     min-width: 274px;
-    min-height: 260px;
-    /* Each scoreboard takes x% width minus gap */
+    min-height: 300px;
+    max-width: 274px;
+    max-height: 300px;
     margin-bottom: 4px;
-    /* Ensure a gap between rows */
     cursor: pointer;
     box-sizing: border-box;
     transition: all 0.3s ease-in-out;
@@ -24,9 +24,9 @@
 }
 
 .scoreboard.expanded {
-    min-height: 550px;
+    min-height: 625px;
     max-width: 275px;
-    /* Adjust the desired maximum height */
+    max-height: 650px;
     overflow-y: auto;
     width: 100%;
 }
@@ -35,7 +35,6 @@
     display: block;
 }
 
-/* Styles for the additional information */
 .additional-info {
     margin-top: 20px;
     padding: 10px;
@@ -126,6 +125,7 @@
     text-align: center;
     margin-top: 20px;
     border-top: 1px solid #ccc;
+    padding-top: 10px;
 }
 
 .stat {

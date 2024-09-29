@@ -69,7 +69,7 @@ const Scoreboard = ({ data, isLive, isFinal }) => {
                 <></>
             )}
             {isExpanded && (
-                <Stats data={data} isLive={isLive} />
+                <Stats data={data} isLive={isLive} isFinal={isFinal} />
             )}
             {teamInfoPopup && (
                 <TeamInfoPopup teamInfo={teamInfoPopup} onClose={closeTeamInfoPopup} />
