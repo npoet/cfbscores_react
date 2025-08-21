@@ -12,40 +12,25 @@ const Scoreboard = ({ data, isLive, isFinal }) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const [teamInfoPopup, setTeamInfoPopup] = useState(null);
 
-
     const toggleExpansion = () => {
         setIsExpanded(!isExpanded);
     };
 
-    const onHomeLogoClick = () => {
-        const { home_id, home_logo, home_mascot, home_record } = data;
-
-        // Check if the game type is "FBS" before opening the popup
-        if (data.type === 'FBS') {
+    const handleLogoClick = (team, type) => {
+        const { [`${team}_id`]: id, [`${team}_logo`]: logo, [`${team}_mascot`]: mascot, [`${team}_record`]: record } = data;
+        // check that game type is fbs and data exists before opening popup
+        if (type === "FBS" && record !== "0-0") {
             setTeamInfoPopup({
-                team_id: home_id,
-                team_logo: home_logo,
-                team_mascot: home_mascot,
-                team_record: home_record,
+                team_id: id,
+                team_logo: logo,
+                team_mascot: mascot,
+                team_record: record,
             });
         }
     };
 
-    const onAwayLogoClick = () => {
-        const { away_id, away_logo, away_mascot, away_record } = data;
-
-        // Check if the game type is "FBS" before opening the popup
-        if (data.type === 'FBS') {
-            setTeamInfoPopup({
-                team_id: away_id,
-                team_logo: away_logo,
-                team_mascot: away_mascot,
-                team_record: away_record,
-            });
-        }
-    };
-
-
+    const onHomeLogoClick = () => handleLogoClick("home", data.type);
+    const onAwayLogoClick = () => handleLogoClick("away", data.type);
 
     const closeTeamInfoPopup = () => {
         setTeamInfoPopup(null);
