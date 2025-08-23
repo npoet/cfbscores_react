@@ -33,10 +33,7 @@ const ScoreboardGrid = () => {
     }, []);
 
     const handleScoreboardClick = (index, gameType) => {
-        // Prevent expansion if the game type is in the nonExpandableTypes array
-        if (nonExpandableTypes.includes(gameType)) {
-            return; // Do nothing if it's a non-expandable game type
-        }
+        if (nonExpandableTypes.includes(gameType)) return;
 
         const newExpandedScoreboards = [...expandedScoreboards];
         newExpandedScoreboards[index] = !newExpandedScoreboards[index];
@@ -52,35 +49,33 @@ const ScoreboardGrid = () => {
     };
 
     const filteredScoreboards = scoreboardDataList.filter((scoreboard) => {
+        const gameDate = new Date(scoreboard.date);
+        const today = new Date();
+
+        // Normalize dates to midnight
+        gameDate.setHours(0, 0, 0, 0);
+        today.setHours(0, 0, 0, 0);
+
+        // If filter is TODAY → only return games from today
+        if (filter === 'TODAY') {
+            return gameDate.getTime() === today.getTime();
+        }
+
         // Filter by category if a filter is set
         if (filter) {
             if (Array.isArray(filter)) {
-                // If the filter is an array (e.g., "All Football"), check if the scoreboard type matches any of the types
                 if (!filter.includes(scoreboard.type)) return false;
             } else {
-                // If the filter is a single category
                 if (scoreboard.type !== filter) return false;
             }
         }
 
-        const gameDate = new Date(scoreboard.date);
-        const today = new Date();
-        const fiveDaysAgo = new Date();
-        const sevenDaysFromNow = new Date();
-
-        // Set the hours to 0 for date-only comparison
-        gameDate.setHours(0, 0, 0, 0);
-        today.setHours(0, 0, 0, 0);
-        fiveDaysAgo.setHours(0, 0, 0, 0);
-        sevenDaysFromNow.setHours(0, 0, 0, 0);
-
-        // Adjust `fiveDaysAgo` to be 5 days before today
+        const fiveDaysAgo = new Date(today);
+        const sevenDaysFromNow = new Date(today);
         fiveDaysAgo.setDate(today.getDate() - 5);
-
-        // Adjust `sevenDaysFromNow` to be 7 days ahead of today
         sevenDaysFromNow.setDate(today.getDate() + 7);
 
-        // Return true if the game date is within the last 5 days or up to a week in the future
+        // Default range: show games from last 5 days to next 7 days
         return gameDate >= fiveDaysAgo && gameDate <= sevenDaysFromNow;
     });
 
@@ -92,7 +87,7 @@ const ScoreboardGrid = () => {
             />
             <div className="scoreboard-grid">
                 {filteredScoreboards.map((scoreboardData, index) => {
-                    const gameType = scoreboardData.type; // Capture the game type
+                    const gameType = scoreboardData.type;
                     const isLive = scoreboardData.home_score !== undefined && !(scoreboardData.time && (scoreboardData.time.includes("Final") || scoreboardData.time.includes("FT")));
                     const isFinal = scoreboardData.time && (scoreboardData.time.includes("Final") || scoreboardData.time.includes("FT"));
 
