@@ -1,7 +1,7 @@
 // TopBar.js
 
 import React from 'react';
-import { FaFootballBall, FaFutbol, FaGlobeAmericas, FaGraduationCap } from 'react-icons/fa';
+import { FaFootballBall, FaFutbol, FaGlobeAmericas, FaGraduationCap, FaCalendarDay } from 'react-icons/fa';
 
 const TopBar = ({ onFilterChange, onFilterReset }) => {
     const handleAllFootball = () => {
@@ -16,12 +16,19 @@ const TopBar = ({ onFilterChange, onFilterReset }) => {
         onFilterChange('EPL');
     };
 
+    const handleToday = () => {
+        onFilterChange('TODAY');
+    };
+
     return (
         <div className="top-bar">
             <button onClick={onFilterReset}>
                 <FaGlobeAmericas title="Show All" />
             </button>
-             <button onClick={handleAllFootball}>
+            <button onClick={handleToday}>
+                <FaCalendarDay title="Today" />
+            </button>
+            <button onClick={handleAllFootball}>
                 <FaFootballBall title="All Football" />
             </button>
             <button onClick={handleCollegeFootball}>
