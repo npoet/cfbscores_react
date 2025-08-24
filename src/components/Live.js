@@ -45,9 +45,9 @@ const Live = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
                 {possession == "home" && <div className="poss">{'\u2B24'}</div>}
                 <div className="score">{home_score}</div>
             </div>
-            {time != "Halftime" && <div className="game-clock">{time}  |  {ball_on}</div>}
-            {time == "Halftime" && <div className="game-clock">{time}</div>}
-
+            <div className="game-clock">
+              {["Halftime", "Delayed", "Canceled"].includes(time) ? time : `${time}  |  ${ball_on}`}
+            </div>
             <div className="game-details">
                 <p>TV: {GenerateTVLink(tv)}</p>
             </div>
