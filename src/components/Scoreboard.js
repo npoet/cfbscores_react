@@ -7,13 +7,14 @@ import Stats from './Stats'
 import Scheduled from './Scheduled'
 import TeamInfoPopup from './TeamInfoPopup'; // Import the TeamInfoPopup component
 
-
 const Scoreboard = ({ data, isLive, isFinal }) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const [teamInfoPopup, setTeamInfoPopup] = useState(null);
 
     const toggleExpansion = () => {
-        setIsExpanded(!isExpanded);
+        if (data.type !== "EPL") {
+            setIsExpanded(!isExpanded);
+        }
     };
 
     const handleLogoClick = (team, type) => {
@@ -40,19 +41,13 @@ const Scoreboard = ({ data, isLive, isFinal }) => {
         <div className={`scoreboard ${isExpanded ? 'expanded' : ''}`} onClick={toggleExpansion}>
             {!isLive && !isFinal ? (
                 <Scheduled data={data} onHomeLogoClick={onHomeLogoClick} onAwayLogoClick={onAwayLogoClick} />
-            ) : (
-                <></>
-            )}
+            ) : null}
             {isLive ? (
                 <Live data={data} onHomeLogoClick={onHomeLogoClick} onAwayLogoClick={onAwayLogoClick} />
-            ) : (
-                <></>
-            )}
+            ) : null}
             {isFinal ? (
                 <Final data={data} onHomeLogoClick={onHomeLogoClick} onAwayLogoClick={onAwayLogoClick} />
-            ) : (
-                <></>
-            )}
+            ) : null}
             {isExpanded && (
                 <Stats data={data} isLive={isLive} isFinal={isFinal} />
             )}

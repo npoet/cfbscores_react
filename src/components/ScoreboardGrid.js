@@ -33,8 +33,6 @@ const ScoreboardGrid = () => {
     }, []);
 
     const handleScoreboardClick = (index, gameType) => {
-        if (nonExpandableTypes.includes(gameType)) return;
-
         const newExpandedScoreboards = [...expandedScoreboards];
         newExpandedScoreboards[index] = !newExpandedScoreboards[index];
         setExpandedScoreboards(newExpandedScoreboards);
