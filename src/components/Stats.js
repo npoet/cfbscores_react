@@ -24,7 +24,8 @@ const Stats = ({ data, isLive, isFinal }) => {
         win_prob,
         gamecast,
         box_score,
-        highlights
+        highlights,
+        description
     } = data;
     
     return (
@@ -48,16 +49,16 @@ const Stats = ({ data, isLive, isFinal }) => {
                 </div>
             ) : isFinal ? (
                 <div>
-                    <div className="stat">
-                        <h3><p>Game Leaders:</p></h3>
+                    <div>
                         <p>{pass_leader}</p>
                         <p>{rush_leader}</p>
                         <p>{rec_leader}</p>
                     </div>
                     <div className="stat">
-                        <h3><a href={gamecast} target="_blank" rel="noopener noreferrer">Gamecast</a></h3>
                         <h3><a href={box_score} target="_blank" rel="noopener noreferrer">Box Score</a></h3>
-                        <h3><a href={highlights} target="_blank" rel="noopener noreferrer">Highlights</a></h3>
+                    </div>
+                    <div className="stat">
+                        <p>{description}</p>
                     </div>
                 </div>
             ) : (
