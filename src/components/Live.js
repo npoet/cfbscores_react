@@ -52,7 +52,7 @@ const Live = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
                 : (!ball_on ? time : `${time}  |  ${short_down_distance}`)}
             </div>
             <div className="game-details">
-                <p>Ball on {ball_on}</p>
+                {ball_on ? (<p>Ball on {ball_on}</p>) : null}
                 <p>TV: {GenerateTVLink(tv)}</p>
             </div>
         </div>
