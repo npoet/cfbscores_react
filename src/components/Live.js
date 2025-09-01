@@ -19,6 +19,7 @@ const Live = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
         time,
         possession,
         ball_on,
+        short_down_distance,
         tv
     } = data;
 
@@ -48,9 +49,10 @@ const Live = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
             <div className="game-clock">
               {["Halftime", "Delayed", "Canceled"].includes(time)
                 ? time
-                : (!ball_on ? time : `${time}  |  ${ball_on}`)}
+                : (!ball_on ? time : `${time}  |  ${short_down_distance}`)}
             </div>
             <div className="game-details">
+                <p>Ball on {ball_on}</p>
                 <p>TV: {GenerateTVLink(tv)}</p>
             </div>
         </div>
