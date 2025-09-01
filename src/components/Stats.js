@@ -21,6 +21,7 @@ const Stats = ({ data, isLive, isFinal }) => {
         rush_leader,
         rec_leader,
         last_play,
+        down_distance,
         win_prob,
         gamecast,
         box_score,
@@ -37,6 +38,10 @@ const Stats = ({ data, isLive, isFinal }) => {
                         <p>{pass_leader}</p>
                         <p>{rush_leader}</p>
                         <p>{rec_leader}</p>
+                    </div>
+                    <div className="stat">
+                        <h3><p>Situation:</p></h3>
+                        <p>{down_distance}</p>
                     </div>
                     <div className="stat">
                         <h3><p>Last Play:</p></h3>
