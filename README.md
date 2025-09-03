@@ -24,9 +24,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ### Examples:
 Main Page (All Sports):
 ![main page example](./public/cfbscores_update.png)
-Team Info Overlay - On Logo Click (FBS):
+Team Info Overlay - On Logo Click (FBS/FCS):
 ![michigan overlay example](./public/cfbscores_overlay.PNG)
-Expanded Cells on Click:
+Expanded Cells on Click (American Football):
 ![expanded scoreboard cells](./public/expandedcellview.PNG)
 
 
