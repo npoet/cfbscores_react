@@ -20,7 +20,7 @@ const Scoreboard = ({ data, isLive, isFinal }) => {
     const handleLogoClick = (team, type) => {
         const { [`${team}_id`]: id, [`${team}_logo`]: logo, [`${team}_mascot`]: mascot, [`${team}_record`]: record } = data;
         // check that game type is fbs and data exists before opening popup
-        if (type === "FBS" && record !== "0-0") {
+        if ((type === "FBS" || type === "FCS") && record !== "0-0") {
             setTeamInfoPopup({
                 team_id: id,
                 team_logo: logo,
