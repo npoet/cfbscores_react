@@ -59,7 +59,9 @@ const TeamInfoPopup = ({ teamInfo, onClose }) => {
                                 <h2>{team_record}</h2>
                                 <h1>{team_id}</h1>
                                 <h4>{team_mascot}</h4>
-                                <h3>Expected Wins: {recordData.exp_wins.toFixed(5)}</h3>
+                                <h3>
+                                    Expected Wins: {recordData.exp_wins !== null ? recordData.exp_wins.toFixed(5) : ""}
+                                </h3>
                                 <h3>Conf. Record: {recordData.conference_wl}</h3>
                                 <h3>Home Record: {recordData.home_wl}</h3>
                                 <h3>Away Record: {recordData.away_wl}</h3>
