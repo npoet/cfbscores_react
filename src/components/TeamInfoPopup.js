@@ -13,9 +13,9 @@ const TeamInfoPopup = ({ teamInfo, onClose }) => {
             try {
                 // Fetch all data concurrently
                 const [teamResponse, seasonResponse, recordResponse] = await Promise.all([
-                    fetch(`http://localhost:8001/team/${encodeURIComponent(team_id)}`).then(res => res.json()),
-                    fetch(`http://localhost:8001/season/${encodeURIComponent(team_id)}`).then(res => res.json()),
-                    fetch(`http://localhost:8001/record/${encodeURIComponent(team_id)}`).then(res => res.json()),
+                    fetch(`https://api.npoet.dev/team/${encodeURIComponent(team_id)}`).then(res => res.json()),
+                    fetch(`https://api.npoet.dev/season/${encodeURIComponent(team_id)}`).then(res => res.json()),
+                    fetch(`https://api.npoet.dev/record/${encodeURIComponent(team_id)}`).then(res => res.json()),
                 ]);
 
                 // Set all the states with the fetched data

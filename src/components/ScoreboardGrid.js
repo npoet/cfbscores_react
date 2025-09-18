@@ -11,7 +11,7 @@ const ScoreboardGrid = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8001/scores');
+        const response = await fetch('https://api.npoet.dev/scores');
         const data = await response.json();
         setScoreboardDataList(data);
       } catch (error) {
