@@ -173,4 +173,21 @@
   }
 }
 
+.team {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* push info left, score right */
+  gap: 0.75rem;
+  width: 100%;
+}
 
+.info {
+  flex: 1; /* ensures team name/details expand */
+}
+
+.score-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 3rem;
+}

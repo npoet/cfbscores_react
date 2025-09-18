@@ -21,6 +21,11 @@ const Scheduled = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
 
   const defaultLogo = '/helmet.png';
 
+  const detailsText =
+    tv && !tv.includes("Off Air")
+      ? `${tv} | ${odds}`
+      : `${odds}`;
+
   const getFormColor = (char) => {
     if (type === "EPL") {
       switch (char.toUpperCase()) {
@@ -94,7 +99,7 @@ const Scheduled = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
 
       <div className="game-details">
         <p>{time}</p>
-        <p>{tv} | {odds}</p>
+        <p>{detailsText}</p>
       </div>
     </div>
   );
