@@ -53,7 +53,7 @@
   gap: 0.75rem;
 }
 
-.team img {
+.team Image {
   width: 42px;
   height: 42px;
 }
@@ -155,7 +155,7 @@
 
 /* Responsive Cards */
 @media (max-width: 400px) {
-  .team img {
+  .team Image {
     width: 32px;
     height: 32px;
   }
