@@ -160,3 +160,52 @@
 .top-bar button:last-child {
     margin-right: 0;
 }
+
+/* ===== Mobile / small screen adjustments ===== */
+@media (max-width: 600px) {
+
+  .scoreboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 10px;
+  }
+
+  .scoreboard {
+    max-width: 100%;
+    min-width: unset;
+    padding: 10px;
+    aspect-ratio: 1 / 1;
+  }
+
+  .team {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    gap: 8px;
+  }
+
+  .team img {
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+  }
+
+  .team h2 { font-size: 14px; }
+  .team p  { font-size: 12px; }
+
+  .score {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 6px;
+  }
+
+  .game-clock {
+    font-size: 14px;
+  }
+
+  .stats {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+}
