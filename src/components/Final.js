@@ -1,6 +1,7 @@
 // Final.js
 
 import React from 'react';
+import Image from 'next/image';
 import './Scoreboard.css';
 
 const Final = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
@@ -23,12 +24,15 @@ const Final = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
     return (
         <div className="final-game">
             <div className="team">
-                <img
-                    src={away_logo}
-                    alt={`${away} Logo`}
-                    onClick={() => onAwayLogoClick(data)}
-                    style={{ cursor: 'pointer' }}
-                />
+                <div style={{ cursor: 'pointer' }} onClick={() => onAwayLogoClick(data)}>
+                    <Image
+                        src={away_logo}
+                        alt={`${away} Logo`}
+                        width={42}
+                        height={42}
+                        priority={false}
+                    />
+                </div>
                 <div className="info">
                     <h2>{away}</h2>
                     <p>{away_record}</p>
@@ -37,12 +41,15 @@ const Final = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
             </div>
             <div className="versus">{time}</div>
             <div className="team">
-                <img
-                    src={home_logo}
-                    alt={`${home} Logo`}
-                    onClick={() => onHomeLogoClick(data)}
-                    style={{ cursor: 'pointer' }}
-                />
+                <div style={{ cursor: 'pointer' }} onClick={() => onHomeLogoClick(data)}>
+                    <Image
+                        src={home_logo}
+                        alt={`${home} Logo`}
+                        width={42}
+                        height={42}
+                        priority={false}
+                    />
+                </div>
                 <div className="info">
                     <h2>{home}</h2>
                     <p>{home_record}</p>

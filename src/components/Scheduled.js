@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const Scheduled = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
   const {
@@ -46,12 +47,18 @@ const Scheduled = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
   return (
     <div className="scoreboard-card scheduled-game">
       <div className="team">
-        <img
-          src={away_logo || defaultLogo}
-          alt={`${away} Logo`}
+        <div
+          style={{ cursor: 'pointer', position: 'relative' }}
           onClick={() => onAwayLogoClick(data)}
-          style={{ cursor: 'pointer' }}
-        />
+        >
+          <Image
+            src={away_logo || defaultLogo}
+            alt={`${away} Logo`}
+            width={42}
+            height={42}
+            priority={false}
+          />
+        </div>
         <div className="info">
           <h2>
             <a href={away_site} target="_blank" rel="noopener noreferrer">{away}</a>
@@ -64,12 +71,18 @@ const Scheduled = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
       <div className="versus">VS</div>
 
       <div className="team">
-        <img
-          src={home_logo || defaultLogo}
-          alt={`${home} Logo`}
+        <div
+          style={{ cursor: 'pointer', position: 'relative' }}
           onClick={() => onHomeLogoClick(data)}
-          style={{ cursor: 'pointer' }}
-        />
+        >
+          <Image
+            src={home_logo || defaultLogo}
+            alt={`${home} Logo`}
+            width={42}
+            height={42}
+            priority={false}
+          />
+        </div>
         <div className="info">
           <h2>
             <a href={home_site} target="_blank" rel="noopener noreferrer">{home}</a>
