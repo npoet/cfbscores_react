@@ -1,11 +1,10 @@
 'use client'
 
-import ScoreboardGrid from '../components/ScoreboardGrid'; // Update the path as needed
+import ScoreboardGrid from '../components/ScoreboardGrid';
 
 export default function Home() {
   return (
     <div>
-      <h1></h1>
       <ScoreboardGrid />
     </div>
   )
