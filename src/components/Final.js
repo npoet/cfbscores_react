@@ -1,8 +1,9 @@
 // Final.js
 
 import React from 'react';
+import './Scoreboard.css';
 
-const Final = ({ data }) => {
+const Final = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
     const {
         home,
         home_logo,
@@ -22,7 +23,12 @@ const Final = ({ data }) => {
     return (
         <div className="final-game">
             <div className="team">
-                <img src={away_logo} alt={`${away} Logo`} />
+                <img
+                    src={away_logo}
+                    alt={`${away} Logo`}
+                    onClick={() => onAwayLogoClick(data)}
+                    style={{ cursor: 'pointer' }}
+                />
                 <div className="info">
                     <h2>{away}</h2>
                     <p>{away_record}</p>
@@ -31,7 +37,12 @@ const Final = ({ data }) => {
             </div>
             <div className="versus">{time}</div>
             <div className="team">
-                <img src={home_logo} alt={`${home} Logo`} />
+                <img
+                    src={home_logo}
+                    alt={`${home} Logo`}
+                    onClick={() => onHomeLogoClick(data)}
+                    style={{ cursor: 'pointer' }}
+                />
                 <div className="info">
                     <h2>{home}</h2>
                     <p>{home_record}</p>
