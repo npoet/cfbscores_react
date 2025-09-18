@@ -1,102 +1,116 @@
-/* TeamInfoPopup.css */
+/* === Team Info Popup === */
 
 .team-info-popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.699);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
 }
 
 .team-info-popup {
-    background: rgb(54, 54, 54);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    width: 85%;
-    text-align: left;
+  background: rgb(var(--card-rgb));
+  color: rgb(var(--foreground-rgb));
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  width: 85%;
+  max-width: 900px;
+  text-align: left;
+  border: 1px solid rgba(var(--card-border-rgb), 0.6);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .team-info-header {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .close-button {
-    cursor: pointer;
-    font-size: 20px;
-    color: #555;
+  cursor: pointer;
+  font-size: 20px;
+  color: rgba(var(--foreground-rgb), 0.6);
+  transition: color 0.2s;
+}
+
+.close-button:hover {
+  color: rgb(var(--foreground-rgb));
 }
 
 .team-info-content {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .left-column {
-    flex: 1;
-    padding-right: 20px;
+  flex: 0.75;
+  padding-right: 20px;
 }
 
 .team-logo {
-    max-width: 60%;
-    height: auto;
+  max-width: 60%;
+  height: auto;
 }
 
 .team-details {
-    margin-top: 10px;
-    color: white;
+  margin-top: 10px;
+  color: rgb(var(--foreground-rgb));
 }
 
 .team-details h3 {
-    margin-top: 15px;
-}
-
-.team-info-content {
-    display: flex;
-    justify-content: space-between;
-    color: white;
-}
-
-.left-column {
-    flex: 0.75;
+  margin-top: 15px;
 }
 
 .center-column {
-    flex: 0.75;
+  flex: 0.75;
 }
 
 .center-column p,
-h3 {
-    margin-top: 8px;
-    margin-bottom: 8px;
+.center-column h3 {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .center-column h2 {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .right-column {
-    flex: 2;
-    padding-left: 20px;
-    overflow-x: auto;
+  flex: 2;
+  padding-left: 20px;
+  overflow-x: auto;
 }
 
+/* === Table Styling === */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: rgb(var(--foreground-rgb));
 }
 
 th,
 td {
-    border: 1px solid #ddd;
-    padding: 5px;
-    text-align: left;
-    white-space: nowrap;
+  border: 1px solid rgba(var(--card-border-rgb), 0.5);
+  padding: 6px 8px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+th {
+  background: rgba(var(--callout-rgb), 0.6);
+  font-weight: 600;
+}
+
+td {
+  background: rgba(var(--card-rgb), 0.4);
 }

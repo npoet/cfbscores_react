@@ -1,3 +1,29 @@
+/* ===========================
+   Fonts
+   =========================== */
+@font-face {
+  font-family: "Atkinson";
+  src: url("/fonts/atkinson-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Atkinson";
+  src: url("/fonts/atkinson-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+body, .main, .description, .card, .scoreboard {
+  font-family: "Atkinson", sans-serif;
+}
+
+/* ===========================
+   CSS Variables / Colors
+   =========================== */
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -5,9 +31,19 @@
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: 15, 18, 25;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  --card-rgb: 180, 185, 188;
+  --card-border-rgb: 131, 134, 135;
+  --callout-rgb: 238, 240, 241;
+  --callout-border-rgb: 172, 175, 176;
+
+  --accent: #2337ff;
+  --gray: 96, 115, 159;
+  --gray-light: 229, 233, 240;
+  --gray-dark: 34, 41, 57;
 
   --primary-glow: conic-gradient(from 180deg at 50% 50%,
       #16abff33 0deg,
@@ -18,20 +54,23 @@
   --secondary-glow: radial-gradient(rgba(255, 255, 255, 1),
       rgba(255, 255, 255, 0));
 
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(#00000080,
-      #00000040,
-      #00000030,
-      #00000020,
-      #00000010,
-      #00000010,
-      #00000080);
+      /* Force theme via data-theme */
+body[data-theme="light"] {
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 240, 240, 240;
+  --foreground-rgb: 0, 0, 0;
+  --card-rgb: 255, 255, 255;
+  --card-border-rgb: 200, 200, 200;
+}
 
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
+body[data-theme="dark"] {
+  --background-start-rgb: 10, 10, 10;
+  --background-end-rgb: 20, 20, 20;
+  --foreground-rgb: 255, 255, 255;
+  --card-rgb: 30, 30, 30;
+  --card-border-rgb: 80, 80, 80;
+}
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -40,62 +79,412 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
 
+    --card-rgb: 100, 100, 100;
+    --card-border-rgb: 200, 200, 200;
+    --callout-rgb: 20, 20, 20;
+    --callout-border-rgb: 108, 108, 108;
+
     --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
     --secondary-glow: linear-gradient(to bottom right,
         rgba(1, 65, 255, 0),
         rgba(1, 65, 255, 0),
         rgba(1, 65, 255, 0.3));
+  }
 
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(#ffffff80,
-        #ffffff40,
-        #ffffff30,
-        #ffffff20,
-        #ffffff10,
-        #ffffff10,
-        #ffffff80);
+  body {
+    color: rgb(var(--foreground-rgb));
+  }
 
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
+  .team h2,
+  .score,
+  .game-time,
+  .game-clock,
+  .game-details,
+  .stats {
+    color: rgb(var(--foreground-rgb));
+  }
+
+  .team p {
+    color: rgba(var(--foreground-rgb), 0.7);
   }
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
+/* ===========================
+   Body & Main
+   =========================== */
+body {
   margin: 0;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
+  padding: 0;
+  box-sizing: border-box;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(to bottom,
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 3rem 1rem;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  min-height: 100vh;
 }
 
-a {
-  color: inherit;
+/* ===========================
+   Description Boxes
+   =========================== */
+.description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.85rem;
+  max-width: var(--max-width);
+  width: 100%;
+  z-index: 2;
+  font-family: var(--font-mono);
+}
+
+.description a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.description p {
+  position: relative;
+  margin: 0;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  background: rgba(var(--callout-rgb), 0.05);
+  border: 1px solid rgba(var(--callout-border-rgb), 0.2);
+  color: rgb(var(--gray-dark));
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .description p {
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
+    backdrop-filter: blur(24px);
+    background: linear-gradient(to bottom,
+      rgba(var(--background-start-rgb), 1),
+      rgba(var(--callout-rgb), 0.5));
+  }
+}
+
+/* ===========================
+   Scoreboard Grid
+   =========================== */
+.scoreboard-grid,
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 2rem auto;
+}
+
+@media (max-width: 640px) {
+  .scoreboard-grid,
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .scoreboard-grid,
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+/* ===========================
+   Cards / Scoreboards
+   =========================== */
+.card,
+.scoreboard {
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius);
+  background: rgba(var(--card-rgb), 0.05);
+  border: 1px solid rgba(var(--card-border-rgb), 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+  transition: background 200ms, border 200ms;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover,
+  .scoreboard:hover {
+    background: rgba(var(--card-rgb), 0.1);
+    border: 1px solid rgba(var(--card-border-rgb), 0.3);
+  }
+}
+
+/* Expanded card */
+.scoreboard.expanded {
+  min-height: 600px;
+  max-height: 620px;
+  max-width: 225px;     /* keep the original card width */
+}
+
+.scoreboard.expanded .stats {
+  display: block;
+}
+
+/* ===========================
+   Teams inside Cards
+   =========================== */
+.team {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.team img {
+  width: 42px;
+  height: 42px;
+}
+
+.team .info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.team h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgb(var(--gray-dark));
+}
+
+.team p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgb(var(--gray));
+}
+
+/* Versus / Score / Possession / Time */
+.versus {
+  font-weight: bold;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.score {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+.poss {
+  color: var(--accent);
+  margin-left: 0.25rem;
+  font-weight: bold;
+}
+
+.game-time,
+.game-clock {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+}
+
+.game-details,
+.stats {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: rgb(var(--gray-dark));
+  font-family: var(--font-mono);
+  text-align: center;
+}
+
+/* ===========================
+   Center Glow Elements
+   =========================== */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 4rem 0;
+}
+
+.center::before,
+.center::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: blur(45px);
+  z-index: -1;
+}
+
+.center::before {
+  background: var(--secondary-glow);
+  border-radius: 50%;
+  width: 480px;
+  height: 360px;
+}
+
+.center::after {
+  background: var(--primary-glow);
+  width: 240px;
+  height: 180px;
+}
+
+/* ===========================
+   Responsive / Mobile Adjustments
+   =========================== */
+@media (max-width: 700px) {
+  .main {
+    padding: 2rem 1rem;
+  }
+
+  .grid,
+  .scoreboard-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin-bottom: 120px;
+    text-align: center;
+  }
+
+  .card,
+  .scoreboard {
+    padding: 1rem 1.5rem;
+  }
+
+  .card h2,
+  .team h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .center {
+    padding: 8rem 0 6rem;
+  }
+
+  .center::before {
+    height: 300px;
+    transform: none;
+  }
+
+  .description {
+    font-size: 0.8rem;
+  }
+}
+
+
+/* Tablet / smaller desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+  .grid,
+  .scoreboard-grid {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+/* Default text colors */
+.team h2,
+.score,
+.game-time,
+.game-clock,
+.game-details,
+.stats {
+  color: rgb(var(--foreground-rgb));
+}
+
+/* Secondary text (records, small details) */
+.team p {
+  color: rgba(var(--foreground-rgb), 0.75);
+}
+
+/* === TopBar === */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(var(--card-rgb), 0.8);
+  border-bottom: 1px solid rgba(var(--card-border-rgb), 0.5);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 500;
+}
+
+/* Grouped sections */
+.top-bar .filters {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.top-bar .theme-toggle {
+  display: flex;
+}
+
+/* Button styles */
+.top-bar button {
+  background: rgba(var(--card-rgb), 0.9);
+  color: rgb(var(--foreground-rgb));
+  border: 1px solid rgba(var(--card-border-rgb), 0.6);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-bar button:hover {
+  background: rgba(var(--card-rgb), 1);
+  transform: translateY(-2px);
+}
+
+.top-bar button:active {
+  transform: scale(0.95);
+}
+
+/* Icon sizing */
+.top-bar button svg {
+  font-size: 1.2rem;
+}
+
+/* Team Name */
+.team h2,
+.team p {
+  margin: 0;
+  font-weight: 600;
+  color: rgb(var(--gray-dark)); /* dark text for readability */
+  text-decoration: none; /* remove underline */
+}
+
+/* Optional: make it adapt to dark mode */
+:root[data-theme="dark"] .team h2,
+:root[data-theme="dark"] .team p {
+  color: rgb(240, 240, 245); /* light text in dark mode */
+}
+
+.team a {
+  color: inherit; /* take the parent color */
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.team a:hover {
+  text-decoration: underline; /* optional subtle hover effect */
+  color: var(--accent);       /* optional accent color */
 }

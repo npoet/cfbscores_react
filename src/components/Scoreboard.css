@@ -1,211 +1,175 @@
-/* Scoreboard.css */
-
-.scoreboard {
-    border: 1px solid black;
-    border-radius: 15px;
-    background-color: rgb(54, 54, 54);
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    color: black;
-    min-width: 274px;
-    min-height: 300px;
-    max-width: 274px;
-    max-height: 300px;
-    margin-bottom: 4px;
-    cursor: pointer;
-    box-sizing: border-box;
-    transition: all 0.3s ease-in-out;
+.scoreboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  gap: 1.5rem;
+  max-width: var(--max-width);
+  margin: 2rem auto;
 }
 
-.scoreboard:hover {
-    box-shadow: 0 0 11px rgb(255, 255, 255);
+@media (max-width: 640px) {
+  .scoreboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .scoreboard-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+/* Card Styles */
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  aspect-ratio: 1 / 1;
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius);
+  background: rgba(var(--card-rgb), 0.05);
+  border: 1px solid rgba(var(--card-border-rgb), 0.2);
+  transition: background 200ms, border 200ms;
+  cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .scoreboard:hover {
+    background: rgba(var(--card-rgb), 0.1);
+    border: 1px solid rgba(var(--card-border-rgb), 0.3);
+  }
 }
 
 .scoreboard.expanded {
-    min-height: 625px;
-    max-width: 275px;
-    max-height: 650px;
-    overflow-y: auto;
-    width: 100%;
+  overflow-y: auto;
 }
 
-.scoreboard.expanded .stats {
-    display: block;
-}
-
-.additional-info {
-    margin-top: 20px;
-    padding: 10px;
-    border-top: 1px solid #ccc;
-}
-
+/* Team Info */
 .team {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.name {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    text-wrap: nowrap;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .team img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+  width: 42px;
+  height: 42px;
 }
 
-.team .info {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    text-wrap: nowrap;
+.info h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
 }
 
-.team h2 {
-    margin: 0;
-    font-size: 20px;
-    color: white;
+.info p {
+  font-size: 0.9rem;
+  color: rgb(var(--gray));
+  margin: 0;
 }
 
-.team p {
-    margin: 0;
-    font-size: 16px;
-    color: white;
-}
-
+/* Score / Versus / Possession */
 .versus {
-    font-size: 22px;
-    margin: 10px 0;
-    color: white;
-    text-align: center;
-}
-
-.game-details p {
-    font-size: 16px;
-    color: white;
-    text-align: center;
-}
-
-.game-clock {
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+  margin: 0.5rem 0;
 }
 
 .score {
-    font-size: 30px;
-    font-weight: bold;
-    color: white;
-    text-align: right;
-    width: 100%
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: right;
 }
 
 .poss {
-    font-size: 12px;
-    font-weight: bold;
-    color: white;
-    text-align: right;
-    width: 25%;
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-align: right;
 }
 
-.stats {
-    font-size: 15.5px;
-    color: white;
-    text-align: center;
-    margin-top: 20px;
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
+/* Game details & clock */
+.game-time, .game-clock {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
 }
 
-.stat {
-    margin-top: 10px;
-    font-size: 16px;
-    color: white;
-    text-align: center;
-    text-wrap: wrap;
+.game-details, .stats {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: white;
+  font-family: var(--font-mono);
+  text-align: center;
 }
 
-.top-bar {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: rgb(54, 54, 54);
+/* Expanded Stats */
+.team-stats-island {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  background: rgba(var(--card-rgb), 0.05);
+  border: 1px solid rgba(var(--card-border-rgb), 0.2);
+  transition: background 200ms, border 200ms;
 }
 
-.top-bar title {
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 24px;
-}
-
-.top-bar button {
-    padding: 10px;
-    margin-right: 10px;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.top-bar button:last-child {
-    margin-right: 0;
-}
-
-/* ===== Mobile / small screen adjustments ===== */
-@media (max-width: 600px) {
-
-  .scoreboard-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin: 10px;
+@media (hover: hover) and (pointer: fine) {
+  .team-stats-island:hover {
+    background: rgba(var(--card-rgb), 0.1);
+    border: 1px solid rgba(var(--card-border-rgb), 0.3);
   }
+}
 
-  .scoreboard {
-    max-width: 100%;
-    min-width: unset;
-    padding: 10px;
-    aspect-ratio: 1 / 1;
-  }
+.team-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+}
 
-  .team {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: left;
-    gap: 8px;
-  }
+.team-stats-grid .left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
 
+.team-stats-grid .right-column {
+  overflow-x: auto;
+  min-width: 0;
+}
+
+.team-stats-grid table {
+  width: 100%;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  border-collapse: collapse;
+}
+
+.team-stats-grid th,
+.team-stats-grid td {
+  border: 1px solid rgba(var(--card-border-rgb), 0.2);
+  padding: 0.25rem 0.5rem;
+  text-align: center;
+}
+
+/* Responsive Cards */
+@media (max-width: 400px) {
   .team img {
-    width: 40px;
-    height: 40px;
-    margin-right: 8px;
+    width: 32px;
+    height: 32px;
   }
 
-  .team h2 { font-size: 14px; }
-  .team p  { font-size: 12px; }
+  .info h2 {
+    font-size: 1rem;
+  }
+
+  .info p {
+    font-size: 0.8rem;
+  }
 
   .score {
-    font-size: 20px;
-    text-align: center;
-    margin-top: 6px;
-  }
-
-  .game-clock {
-    font-size: 14px;
-  }
-
-  .stats {
-    font-size: 14px;
-    margin-top: 10px;
+    font-size: 1rem;
   }
 }
+
+
