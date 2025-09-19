@@ -22,7 +22,9 @@
   }
 }
 
-/* Card Styles */
+/* ===========================
+   Card Styles
+   =========================== */
 .scoreboard {
   display: flex;
   flex-direction: column;
@@ -49,11 +51,15 @@
   overflow-y: auto;
 }
 
-/* Team Info */
+/* ===========================
+   Team Info
+   =========================== */
 .team {
   display: flex;
   align-items: center;
+  justify-content: space-between; /* keeps score right-aligned */
   gap: 0.75rem;
+  width: 100%;
 }
 
 .team Image {
@@ -61,20 +67,35 @@
   height: 42px;
 }
 
+.info {
+  flex: 1; /* allows name/record to expand */
+  display: flex;
+  flex-direction: column;
+}
+
+.score-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 3rem;
+}
+
 .info h2 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: white;
+  color: rgb(var(--foreground-rgb));
   margin: 0;
 }
 
 .info p {
   font-size: 0.9rem;
-  color: rgb(var(--gray));
+  color: rgba(var(--foreground-rgb), 0.7);
   margin: 0;
 }
 
-/* Score / Versus / Possession */
+/* ===========================
+   Score / Versus / Possession
+   =========================== */
 .versus {
   text-align: center;
   font-weight: bold;
@@ -93,23 +114,29 @@
   text-align: right;
 }
 
-/* Game details & clock */
-.game-time, .game-clock {
+/* ===========================
+   Game Details & Clock
+   =========================== */
+.game-time,
+.game-clock {
   text-align: center;
   margin-top: 1rem;
   font-size: 0.9rem;
   font-family: var(--font-mono);
 }
 
-.game-details, .stats {
+.game-details,
+.stats {
   margin-top: 0.5rem;
   font-size: 0.85rem;
-  color: white;
+  color: rgb(var(--foreground-rgb));
   font-family: var(--font-mono);
   text-align: center;
 }
 
-/* Expanded Stats */
+/* ===========================
+   Expanded Stats
+   =========================== */
 .team-stats-island {
   padding: 1rem;
   border-radius: var(--border-radius);
@@ -156,7 +183,9 @@
   text-align: center;
 }
 
-/* Responsive Cards */
+/* ===========================
+   Responsive Cards
+   =========================== */
 @media (max-width: 400px) {
   .team Image {
     width: 32px;
@@ -179,13 +208,13 @@
 .team {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* push info left, score right */
+  justify-content: space-between; /* ensure score remains right */
   gap: 0.75rem;
   width: 100%;
 }
 
 .info {
-  flex: 1; /* ensures team name/details expand */
+  flex: 1;
 }
 
 .score-container {

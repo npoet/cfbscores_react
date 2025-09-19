@@ -1,31 +1,8 @@
 /* ===========================
-   Fonts
-   =========================== */
-@font-face {
-  font-family: "Atkinson";
-  src: url("/fonts/atkinson-regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Atkinson";
-  src: url("/fonts/atkinson-bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-body, .main, .description, .card, .scoreboard {
-  font-family: "Atkinson", sans-serif;
-}
-
-/* ===========================
    CSS Variables / Colors
    =========================== */
 :root {
-  --max-width: 1800px;
+  --max-width: 1900px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
@@ -41,9 +18,6 @@ body, .main, .description, .card, .scoreboard {
   --callout-border-rgb: 172, 175, 176;
 
   --accent: #2337ff;
-  --gray: 96, 115, 159;
-  --gray-light: 229, 233, 240;
-  --gray-dark: 34, 41, 57;
 
   --primary-glow: conic-gradient(from 180deg at 50% 50%,
       #16abff33 0deg,
@@ -54,23 +28,22 @@ body, .main, .description, .card, .scoreboard {
   --secondary-glow: radial-gradient(rgba(255, 255, 255, 1),
       rgba(255, 255, 255, 0));
 
-      /* Force theme via data-theme */
-body[data-theme="light"] {
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 240, 240, 240;
-  --foreground-rgb: 0, 0, 0;
-  --card-rgb: 255, 255, 255;
-  --card-border-rgb: 200, 200, 200;
-}
+  /* Force theme via data-theme */
+  body[data-theme="light"] {
+    --background-start-rgb: 255, 255, 255;
+    --background-end-rgb: 240, 240, 240;
+    --foreground-rgb: 0, 0, 0;
+    --card-rgb: 180, 185, 188;
+    --card-border-rgb: 200, 200, 200;
+  }
 
-body[data-theme="dark"] {
-  --background-start-rgb: 10, 10, 10;
-  --background-end-rgb: 20, 20, 20;
-  --foreground-rgb: 255, 255, 255;
-  --card-rgb: 30, 30, 30;
-  --card-border-rgb: 80, 80, 80;
-}
-
+  body[data-theme="dark"] {
+    --background-start-rgb: 10, 10, 10;
+    --background-end-rgb: 20, 20, 20;
+    --foreground-rgb: 255, 255, 255;
+    --card-rgb: 30, 30, 30;
+    --card-border-rgb: 80, 80, 80;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -162,7 +135,7 @@ body {
   border-radius: var(--border-radius);
   background: rgba(var(--callout-rgb), 0.05);
   border: 1px solid rgba(var(--callout-border-rgb), 0.2);
-  color: rgb(var(--gray-dark));
+  color: rgba(var(--foreground-rgb), 0.75);
   text-align: center;
 }
 
@@ -236,7 +209,7 @@ body {
 .scoreboard.expanded {
   min-height: 600px;
   max-height: 620px;
-  max-width: 220px;     /* keep the original card width */
+  max-width: 220px;
 }
 
 .scoreboard.expanded .stats {
@@ -268,13 +241,13 @@ body {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
-  color: rgb(var(--gray-dark));
+  color: rgb(var(--foreground-rgb));
 }
 
 .team p {
   margin: 0;
   font-size: 0.9rem;
-  color: rgb(var(--gray));
+  color: rgba(var(--foreground-rgb), 0.7);
 }
 
 /* Versus / Score / Possession / Time */
@@ -308,7 +281,7 @@ body {
 .stats {
   margin-top: 0.5rem;
   font-size: 0.85rem;
-  color: rgb(var(--gray-dark));
+  color: rgba(var(--foreground-rgb), 0.9);
   font-family: var(--font-mono);
   text-align: center;
 }
@@ -317,7 +290,7 @@ body {
 .stats-min {
   margin-top: 0.5rem;
   font-size: 0.75rem;
-  color: white;
+  color: rgb(var(--foreground-rgb));
   font-family: var(--font-mono);
   text-align: center;
 }
@@ -396,7 +369,6 @@ body {
   }
 }
 
-
 /* Tablet / smaller desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid,
@@ -415,7 +387,7 @@ body {
   color: rgb(var(--foreground-rgb));
 }
 
-/* Secondary text (records, small details) */
+/* Secondary text */
 .team p {
   color: rgba(var(--foreground-rgb), 0.75);
 }
@@ -478,22 +450,22 @@ body {
 .team p {
   margin: 0;
   font-weight: 600;
-  color: rgb(var(--gray-dark)); /* dark text for readability */
-  text-decoration: none; /* remove underline */
+  color: rgb(var(--foreground-rgb));
+  text-decoration: none;
 }
 
-/* Optional: make it adapt to dark mode */
+/* Dark mode adjustment */
 :root[data-theme="dark"] .team h2,
 :root[data-theme="dark"] .team p {
-  color: rgb(240, 240, 245); /* light text in dark mode */
+  color: rgb(240, 240, 245);
 }
 
 .team a {
-  color: inherit; /* take the parent color */
+  color: inherit;
   text-decoration: none;
 }
 
 .team a:hover {
-  text-decoration: underline; /* optional subtle hover effect */
-  color: var(--accent);       /* optional accent color */
+  text-decoration: underline;
+  color: var(--accent);
 }
