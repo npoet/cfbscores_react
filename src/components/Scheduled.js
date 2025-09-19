@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import TeamLogo from './TeamLogo';
 
 const Scheduled = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
   const {
@@ -56,13 +56,7 @@ const Scheduled = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
           style={{ cursor: 'pointer', position: 'relative' }}
           onClick={() => onAwayLogoClick(data)}
         >
-          <Image
-            src={away_logo || defaultLogo}
-            alt={`${away} Logo`}
-            width={42}
-            height={42}
-            priority={false}
-          />
+          <TeamLogo src={away_logo} alt={away} />
         </div>
         <div className="info">
           <h2>
@@ -80,13 +74,7 @@ const Scheduled = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
           style={{ cursor: 'pointer', position: 'relative' }}
           onClick={() => onHomeLogoClick(data)}
         >
-          <Image
-            src={home_logo || defaultLogo}
-            alt={`${home} Logo`}
-            width={42}
-            height={42}
-            priority={false}
-          />
+          <TeamLogo src={home_logo} alt={home} />
         </div>
         <div className="info">
           <h2>
