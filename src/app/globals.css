@@ -313,6 +313,15 @@ body {
   text-align: center;
 }
 
+.game-details,
+.stats-min {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: white;
+  font-family: var(--font-mono);
+  text-align: center;
+}
+
 /* ===========================
    Center Glow Elements
    =========================== */

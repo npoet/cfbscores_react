@@ -60,7 +60,7 @@ const Final = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
                 {headline ? (
                     <p>{headline}</p>
                 ) : (
-                    <div>
+                    <div className="stats-min">
                         <p>{pass_leader}</p>
                         <p>{rush_leader}</p>
                         <p>{rec_leader}</p>
