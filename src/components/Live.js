@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import TeamLogo from './TeamLogo';
 import GenerateTVLink from '../lib/TvLinks';
 
 const Live = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
@@ -25,13 +25,7 @@ const Live = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
     <div className="scoreboard-card live-game">
       <div className="team">
         <div style={{ cursor: 'pointer' }} onClick={() => onAwayLogoClick(data)}>
-          <Image
-            src={away_logo}
-            alt={`${away} Logo`}
-            width={42}
-            height={42}
-            priority={false}
-          />
+          <TeamLogo src={away_logo} alt={away} />
         </div>
         <div className="info">
           <h2>
@@ -47,13 +41,7 @@ const Live = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
 
       <div className="team">
         <div style={{ cursor: 'pointer' }} onClick={() => onHomeLogoClick(data)}>
-          <Image
-            src={home_logo}
-            alt={`${home} Logo`}
-            width={42}
-            height={42}
-            priority={false}
-          />
+          <TeamLogo src={home_logo} alt={home} />
         </div>
         <div className="info">
           <h2>
