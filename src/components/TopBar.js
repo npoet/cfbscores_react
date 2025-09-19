@@ -7,9 +7,18 @@ import {
   FaGlobeAmericas,
   FaGraduationCap,
   FaCalendarDay,
+  FaMoon,
+  FaSun,
 } from 'react-icons/fa';
 
 const TopBar = ({ onFilterChange, onFilterReset }) => {
+  const [theme, setTheme] = useState(() =>
+    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  );
+
+  useEffect(() => {
+    document.body.dataset.theme = theme;
+  }, [theme]);
 
   const handleAllFootball = () => {
     onFilterChange(['NFL', 'FBS', 'FCS']);
@@ -48,6 +57,11 @@ const TopBar = ({ onFilterChange, onFilterReset }) => {
         </button>
         <button onClick={handleAllSoccer} title="All Soccer">
           <FaFutbol />
+        </button>
+      </div>
+      <div className="theme-toggle">
+        <button onClick={toggleTheme} title="Toggle Theme">
+          {theme === 'dark' ? <FaSun /> : <FaMoon />}
         </button>
       </div>
     </div>
