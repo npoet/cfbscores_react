@@ -20,19 +20,27 @@ const tvChannelIds = {
     "NBC": 19568,
     "USA Net": 85678,
     "Off Air": 118905,
+    "Prime Video": "https://www.twitch.tv/primevideo",
     "ESPN+": "https://www.espn.com/watch/collections/44763/ncaa-football-on-espn+-live-upcoming",
     "Peacock": "https://www.peacocktv.com/watch/sports/highlights"
 };
 
 const GenerateTVLink = (channel) => {
-    if (channel == "ESPN+") {
-        return <a href={tvChannelIds['ESPN+']} target="_blank" rel="noopener noreferrer">{channel}</a>;
+    const idOrUrl = tvChannelIds[channel];
+    if (!idOrUrl) return channel;
+    if (typeof idOrUrl === 'string') {
+        return (
+            <a href={idOrUrl} target="_blank" rel="noopener noreferrer">
+                {channel}
+            </a>
+        );
     }
-    else if (tvChannelIds[channel]) {
-        const url = `https://www.fubo.tv/p/watch?channelId=${tvChannelIds[channel]}%26type%3Dlive`;
-        return <a href={url} target="_blank" rel="noopener noreferrer">{channel}</a>;
-    }
-    return channel;
+    const url = `https://www.fubo.tv/p/watch?channelId=${idOrUrl}%26type%3Dlive`;
+    return (
+        <a href={url} target="_blank" rel="noopener noreferrer">
+            {channel}
+        </a>
+    );
 };
 
 export default GenerateTVLink;
