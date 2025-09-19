@@ -12,13 +12,32 @@ import {
 } from 'react-icons/fa';
 
 const TopBar = ({ onFilterChange, onFilterReset }) => {
-  const [theme, setTheme] = useState(() =>
-    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  );
+  const [theme, setTheme] = useState('light'); // default to light
+  const [mounted, setMounted] = useState(false); // track client mount
 
   useEffect(() => {
-    document.body.dataset.theme = theme;
-  }, [theme]);
+    setMounted(true);
+
+    // check localStorage first
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setTheme(savedTheme);
+      document.body.dataset.theme = savedTheme;
+    } else {
+      // fallback to system preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const defaultTheme = prefersDark ? 'dark' : 'light';
+      setTheme(defaultTheme);
+      document.body.dataset.theme = defaultTheme;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (mounted) {
+      document.body.dataset.theme = theme;
+      localStorage.setItem('theme', theme);
+    }
+  }, [theme, mounted]);
 
   const handleAllFootball = () => {
     onFilterChange(['NFL', 'FBS', 'FCS']);
