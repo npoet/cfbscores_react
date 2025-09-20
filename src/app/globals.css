@@ -468,3 +468,25 @@ body {
   text-decoration: underline;
   color: var(--accent);
 }
+
+/* Footer */
+.footer {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: rgba(var(--foreground-rgb), 0.7);
+  border-top: 1px solid rgba(var(--card-border-rgb), 0.5);
+  background: rgba(var(--card-rgb), 0.6);
+  backdrop-filter: blur(6px);
+  margin-top: 2rem;
+}
+
+.footer a {
+  color: rgba(var(--foreground-rgb), 0.8);
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: rgba(var(--foreground-rgb), 1);
+}

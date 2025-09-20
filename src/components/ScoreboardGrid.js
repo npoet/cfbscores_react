@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Scoreboard from './Scoreboard';
 import TopBar from './TopBar';
+import Footer from './Footer';
 
 const nonExpandableTypes = ['EPL'];
 
@@ -108,6 +109,7 @@ const ScoreboardGrid = () => {
           );
         })}
       </div>
+      <Footer />
     </div>
   );
 };
