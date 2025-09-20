@@ -21,7 +21,7 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. Requires [cfbscores_py](https://github.com/npoet/cfbscores_py) running at localhost:8000 to display content as shown below.
 
-### Examples:
+### Examples (see live site for updated styles):
 Main Page (All Sports):
 ![main page example](./public/cfbscores_update.png)
 Team Info Overlay - On Logo Click (FBS/FCS):
