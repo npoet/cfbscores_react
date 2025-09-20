@@ -28,6 +28,22 @@ const ScoreboardGrid = () => {
   const handleFilterChange = (category) => setFilter(category);
   const handleFilterReset = () => setFilter(null);
 
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const hasLiveGames = scoreboardDataList.some((scoreboard) => {
+    const gameDate = new Date(scoreboard.date);
+    gameDate.setHours(0, 0, 0, 0);
+
+    const isToday = gameDate.getTime() === today.getTime();
+    const isLive =
+      scoreboard.home_score !== undefined &&
+      !(scoreboard.time &&
+        (scoreboard.time.includes('Final') || scoreboard.time.includes('FT')));
+
+    return isToday && isLive;
+  });
+
   const filteredScoreboards = scoreboardDataList.filter((scoreboard) => {
     const gameDate = new Date(scoreboard.date);
     const today = new Date();
@@ -37,6 +53,15 @@ const ScoreboardGrid = () => {
 
     if (filter === 'TODAY') {
       return gameDate.getTime() === today.getTime();
+    }
+
+    if (filter === 'LIVE') {
+      const isLive =
+        gameDate.getTime() === today.getTime() &&
+        scoreboard.home_score !== undefined &&
+        !(scoreboard.time &&
+          (scoreboard.time.includes('Final') || scoreboard.time.includes('FT')));
+      return isLive;
     }
 
     if (filter) {
@@ -57,16 +82,20 @@ const ScoreboardGrid = () => {
 
   return (
     <div>
-      <TopBar onFilterChange={handleFilterChange} onFilterReset={handleFilterReset} />
+      <TopBar
+        onFilterChange={handleFilterChange}
+        onFilterReset={handleFilterReset}
+        hasLiveGames={hasLiveGames}
+      />
       <div className="scoreboard-grid">
         {filteredScoreboards.map((scoreboardData, index) => {
           const isLive =
             scoreboardData.home_score !== undefined &&
             !(scoreboardData.time &&
-              (scoreboardData.time.includes("Final") || scoreboardData.time.includes("FT")));
+              (scoreboardData.time.includes('Final') || scoreboardData.time.includes('FT')));
           const isFinal =
             scoreboardData.time &&
-            (scoreboardData.time.includes("Final") || scoreboardData.time.includes("FT"));
+            (scoreboardData.time.includes('Final') || scoreboardData.time.includes('FT'));
 
           return (
             <Scoreboard

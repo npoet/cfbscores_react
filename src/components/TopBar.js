@@ -11,7 +11,7 @@ import {
   FaSun,
 } from 'react-icons/fa';
 
-const TopBar = ({ onFilterChange, onFilterReset }) => {
+const TopBar = ({ onFilterChange, onFilterReset, hasLiveGames }) => {
   const [theme, setTheme] = useState('light'); // default to light
   const [mounted, setMounted] = useState(false); // track client mount
 
@@ -55,13 +55,25 @@ const TopBar = ({ onFilterChange, onFilterReset }) => {
     onFilterChange('TODAY');
   };
 
+  const handleLive = () => {
+    onFilterChange('LIVE');
+  };
+
   const toggleTheme = () => {
-    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
   return (
-    <div className="top-bar">
-      <div className="filters">
+    <div
+      className="top-bar"
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}
+    >
+      {/* Left filter buttons */}
+      <div className="filters" style={{ display: 'flex', gap: '0.5rem' }}>
         <button onClick={onFilterReset} title="Show All">
           <FaGlobeAmericas />
         </button>
@@ -78,6 +90,21 @@ const TopBar = ({ onFilterChange, onFilterReset }) => {
           <FaFutbol />
         </button>
       </div>
+
+      {/* Center live button (only if live games exist) */}
+      <div className="live-button" style={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
+        {hasLiveGames && (
+          <button
+            onClick={handleLive}
+            title="Live Now"
+            style={{ fontWeight: 'bold', color: 'red' }}
+          >
+            Live!
+          </button>
+        )}
+      </div>
+
+      {/* Right theme toggle */}
       <div className="theme-toggle">
         <button onClick={toggleTheme} title="Toggle Theme">
           {theme === 'dark' ? <FaSun /> : <FaMoon />}
