@@ -288,8 +288,7 @@ body {
 
 .game-details,
 .stats-min {
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   color: rgb(var(--foreground-rgb));
   font-family: var(--font-mono);
   text-align: center;
