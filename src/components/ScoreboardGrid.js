@@ -12,7 +12,7 @@ const ScoreboardGrid = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:8000/scores');
+      const response = await fetch('https://api.npoet.dev/scores');
       const data = await response.json();
       setScoreboardDataList(data);
 
