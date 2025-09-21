@@ -8,42 +8,52 @@ const nonExpandableTypes = ['EPL'];
 const ScoreboardGrid = () => {
   const [scoreboardDataList, setScoreboardDataList] = useState([]);
   const [filter, setFilter] = useState(null);
+  const [hasLiveGames, setHasLiveGames] = useState(false);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/scores');
+      const data = await response.json();
+      setScoreboardDataList(data);
+
+      // check if live games exist
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const live = data.some((scoreboard) => {
+        const gameDate = new Date(scoreboard.date);
+        gameDate.setHours(0, 0, 0, 0);
+
+        const isToday = gameDate.getTime() === today.getTime();
+        const isLive =
+          scoreboard.home_score !== undefined &&
+          !(scoreboard.time &&
+            (scoreboard.time.includes('Final') || scoreboard.time.includes('FT')));
+
+        return isToday && isLive;
+      });
+      setHasLiveGames(live);
+    } catch (error) {
+      console.error('Error fetching scoreboard data:', error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://api.npoet.dev/scores');
-        const data = await response.json();
-        setScoreboardDataList(data);
-      } catch (error) {
-        console.error('Error fetching scoreboard data:', error);
-      }
-    };
-
-    fetchData();
-
-    const refreshInterval = setInterval(fetchData, 60000);
-    return () => clearInterval(refreshInterval);
+    fetchData(); // initial fetch
   }, []);
+
+  useEffect(() => {
+    // refresh interval depends on whether live games exist
+    const intervalMs = hasLiveGames ? 30000 : 1800000; // 30 sec vs 30 min
+    const refreshInterval = setInterval(fetchData, intervalMs);
+
+    return () => clearInterval(refreshInterval);
+  }, [hasLiveGames]);
 
   const handleFilterChange = (category) => setFilter(category);
   const handleFilterReset = () => setFilter(null);
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-
-  const hasLiveGames = scoreboardDataList.some((scoreboard) => {
-    const gameDate = new Date(scoreboard.date);
-    gameDate.setHours(0, 0, 0, 0);
-
-    const isToday = gameDate.getTime() === today.getTime();
-    const isLive =
-      scoreboard.home_score !== undefined &&
-      !(scoreboard.time &&
-        (scoreboard.time.includes('Final') || scoreboard.time.includes('FT')));
-
-    return isToday && isLive;
-  });
 
   const filteredScoreboards = scoreboardDataList.filter((scoreboard) => {
     const gameDate = new Date(scoreboard.date);
@@ -82,7 +92,7 @@ const ScoreboardGrid = () => {
   });
 
   return (
-    <div>
+    <div className="page-container">
       <TopBar
         onFilterChange={handleFilterChange}
         onFilterReset={handleFilterReset}
