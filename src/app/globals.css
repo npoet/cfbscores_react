@@ -288,8 +288,7 @@ body {
 
 .game-details,
 .stats-min {
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   color: rgb(var(--foreground-rgb));
   font-family: var(--font-mono);
   text-align: center;
@@ -468,4 +467,26 @@ body {
 .team a:hover {
   text-decoration: underline;
   color: var(--accent);
+}
+
+/* Footer */
+.footer {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: rgba(var(--foreground-rgb), 0.7);
+  border-top: 1px solid rgba(var(--card-border-rgb), 0.5);
+  background: rgba(var(--card-rgb), 0.6);
+  backdrop-filter: blur(6px);
+  margin-top: 2rem;
+}
+
+.footer a {
+  color: rgba(var(--foreground-rgb), 0.8);
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: rgba(var(--foreground-rgb), 1);
 }
