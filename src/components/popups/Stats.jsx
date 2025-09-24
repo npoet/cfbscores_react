@@ -1,7 +1,7 @@
 // Stats.js
 
 import React from 'react';
-import './Scoreboard.css';
+import '../styles/Scoreboard.css';
 
 const Stats = ({ data, isLive, isFinal }) => {
     const {

@@ -1,8 +1,8 @@
 // Final.js
 
 import React from 'react';
-import TeamLogo from './TeamLogo';
-import './Scoreboard.css';
+import TeamLogo from '../TeamLogo';
+import '../styles/Scoreboard.css';
 
 const Final = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
     const {

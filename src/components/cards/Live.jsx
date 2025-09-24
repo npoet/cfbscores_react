@@ -1,6 +1,6 @@
 import React from 'react';
-import TeamLogo from './TeamLogo';
-import GenerateTVLink from '../lib/TvLinks';
+import TeamLogo from '../TeamLogo';
+import GenerateTVLink from '../../lib/TvLinks';
 
 const Live = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
   const {

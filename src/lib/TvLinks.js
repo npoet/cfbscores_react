@@ -1,7 +1,5 @@
 // TvLinks.js
 
-import React from 'react';
-
 const tvChannelIds = {
     "ABC": 19570,
     "ESPN": 10179,
