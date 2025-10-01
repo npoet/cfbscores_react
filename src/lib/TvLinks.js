@@ -7,7 +7,7 @@ const tvChannelIds = {
     "ESPN": 10179,
     "ESPN2": 12444,
     "ESPNU": 71094,
-    "SEC Network": 1021370001,
+    "SEC Net": 1021370001,
     "ACCN": 1263880001,
     "FOX": 20450,
     "FS1": 94653,
@@ -20,7 +20,7 @@ const tvChannelIds = {
     "NBC": 19568,
     "USA Net": 85678,
     "Off Air": 118905,
-    "Prime Video": "https://www.twitch.tv/primevideo",
+    "Prime": "https://www.twitch.tv/primevideo",
     "ESPN+": "https://www.espn.com/watch/collections/44763/ncaa-football-on-espn+-live-upcoming",
     "Peacock": "https://www.peacocktv.com/watch/sports/highlights"
 };
