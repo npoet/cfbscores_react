@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Scoreboard from './Scoreboard';
+import Scoreboard from './cards/Scoreboard';
 import TopBar from './TopBar';
 import Footer from './Footer';
 

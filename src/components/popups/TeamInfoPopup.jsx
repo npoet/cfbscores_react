@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import "./TeamInfoPopup.css";
+import "../styles/TeamInfoPopup.css";
 
 const TeamInfoPopup = ({ teamInfo, onClose }) => {
   const { team_id, team_logo, team_mascot, team_record } = teamInfo;

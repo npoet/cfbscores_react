@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Live from './Live';
 import Final from './Final';
-import Stats from './Stats';
+import Stats from '../popups/Stats';
 import Scheduled from './Scheduled';
-import TeamInfoPopup from './TeamInfoPopup';
+import TeamInfoPopup from '../popups/TeamInfoPopup';
 
 const Scoreboard = ({ data, isLive, isFinal, nonExpandable }) => {
   const [isExpanded, setIsExpanded] = useState(false);

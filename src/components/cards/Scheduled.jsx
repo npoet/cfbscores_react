@@ -1,5 +1,5 @@
 import React from 'react';
-import TeamLogo from './TeamLogo';
+import TeamLogo from '../TeamLogo';
 
 const Scheduled = ({ data, onHomeLogoClick, onAwayLogoClick }) => {
   const {
