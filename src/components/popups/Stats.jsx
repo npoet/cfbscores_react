@@ -47,10 +47,12 @@ const Stats = ({ data, isLive, isFinal }) => {
                         <h3><p>Last Play:</p></h3>
                         <p>{last_play}</p>
                     </div>
-                    <div className="stat">
+                    {win_prob && (
+                      <div className="stat">
                         <h3><p>Win Probability:</p></h3>
                         <p>{win_prob}</p>
-                    </div>
+                      </div>
+                    )}
                 </div>
             ) : isFinal ? (
                 <div>
