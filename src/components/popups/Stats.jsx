@@ -39,14 +39,18 @@ const Stats = ({ data, isLive, isFinal }) => {
                         <p>{rush_leader}</p>
                         <p>{rec_leader}</p>
                     </div>
-                    <div className="stat">
+                    {down_distance && (
+                      <div className="stat">
                         <h3><p>Situation:</p></h3>
                         <p>{down_distance}</p>
-                    </div>
-                    <div className="stat">
+                      </div>
+                    )}
+                    {last_play && (
+                      <div className="stat">
                         <h3><p>Last Play:</p></h3>
                         <p>{last_play}</p>
-                    </div>
+                      </div>
+                    )}
                     {win_prob && (
                       <div className="stat">
                         <h3><p>Win Probability:</p></h3>
